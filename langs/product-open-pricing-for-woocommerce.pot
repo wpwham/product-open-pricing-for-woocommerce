@@ -1,0 +1,159 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Product Open Pricing (Name Your Price) for WooCommerce
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Product Open Pricing (Name Your Price) for WooCommerce "
+"1.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/product-open-"
+"pricing-name-your-price-for-woocommerce/\n"
+"POT-Creation-Date: 2017-07-25 18:07+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: product-open-pricing-for-woocommerce.php:112
+msgid "Settings"
+msgstr ""
+
+#: product-open-pricing-for-woocommerce.php:114
+msgid "Unlock All"
+msgstr ""
+
+#: includes/class-alg-wc-product-open-pricing-core.php:113
+msgid "Read more"
+msgstr ""
+
+#: includes/class-alg-wc-product-open-pricing-core.php:169
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:85
+msgid "Price is required!"
+msgstr ""
+
+#: includes/class-alg-wc-product-open-pricing-core.php:173
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:92
+msgid "Entered price is too small!"
+msgstr ""
+
+#: includes/class-alg-wc-product-open-pricing-core.php:179
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:99
+msgid "Entered price is too big!"
+msgstr ""
+
+#: includes/class-alg-wc-product-open-pricing-core.php:238
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:63
+msgid "Name Your Price"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:24
+msgid "General"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:39
+msgid "Product Open Pricing Options"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:44
+msgid "Product Open Pricing (Name Your Price)"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:45
+msgid "Enable"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:46
+msgid ""
+"Let your WooCommerce store customers enter price for the product manually."
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:56
+msgid "Options"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:61
+msgid "Frontend Label"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:68
+msgid "Frontend Template"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:69
+msgid "Here you can use"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:76
+msgid "Price Step"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:83
+msgid "Message on Empty Price"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:90
+msgid "Message on Price too Small"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-general.php:97
+msgid "Message on Price too Big"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-per-product.php:88
+#, php-format
+msgid ""
+"Free plugin's version is limited to only one open pricing product enabled at "
+"a time. You will need to get <a href=\"%s\" target=\"_blank\">Product Open "
+"Pricing for WooCommerce Pro</a> to add unlimited number of open pricing "
+"products."
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-per-product.php:106
+msgid "Yes"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-per-product.php:107
+msgid "No"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-per-product.php:109
+msgid "Enabled"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-per-product.php:115
+msgid "Default Price"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-per-product.php:116
+msgid "Default (i.e. Suggested) price"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-per-product.php:122
+msgid "Min Price"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-per-product.php:128
+msgid "Max Price"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-per-product.php:169
+#: includes/admin/class-alg-wc-settings-product-open-pricing.php:24
+msgid "Product Open Pricing"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-section.php:47
+msgid "Reset Section Settings"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-section.php:52
+msgid "Reset Settings"
+msgstr ""
+
+#: includes/admin/class-alg-wc-product-open-pricing-settings-section.php:53
+msgid "Reset"
+msgstr ""
