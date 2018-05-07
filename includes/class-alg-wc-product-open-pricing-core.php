@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.1.1
+ * @version 1.1.3
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -228,7 +228,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * add_open_price_input_field_to_frontend.
 	 *
-	 * @version 1.1.0
+	 * @version 1.1.3
 	 * @since   1.0.0
 	 * @todo    set min and max as in product's settings
 	 * @todo    step on per product basis
@@ -240,11 +240,17 @@ class Alg_WC_Product_Open_Pricing_Core {
 			$title = get_option( 'alg_wc_product_open_pricing_label_frontend', __( 'Name Your Price', 'product-open-pricing-for-woocommerce' ) );
 			// The field - Value
 			$value = ( isset( $_POST['alg_open_price'] ) ) ? $_POST['alg_open_price'] : get_post_meta( $this->get_product_or_variation_parent_id( $_product ), '_' . 'alg_wc_product_open_pricing_default_price', true );
+
+			// Min and Max
+			$min = get_post_meta( $this->get_product_or_variation_parent_id( $_product ), '_' . 'alg_wc_product_open_pricing_min_price', true );
+			$max = get_post_meta( $this->get_product_or_variation_parent_id( $_product ), '_' . 'alg_wc_product_open_pricing_max_price', true );
+
 			// The field - Custom attributes
 			$custom_attributes = '';
 			$default_price_step = 1 / pow( 10, absint( get_option( 'woocommerce_price_num_decimals', 2 ) ) );
 			$custom_attributes .= 'step="' . get_option( 'alg_wc_product_open_pricing_price_step', $default_price_step ) . '" ';
-			$custom_attributes .= 'min="0" ';
+			$custom_attributes .= 'min="'.esc_attr($min).'" ';
+			$custom_attributes .= 'max="'.esc_attr($max).'" ';
 			// The field - Final assembly
 			$input_field = '<input '
 				. 'type="number" '
