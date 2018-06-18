@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.1.3
+ * @version 1.1.4
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -228,7 +228,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * add_open_price_input_field_to_frontend.
 	 *
-	 * @version 1.1.3
+	 * @version 1.1.4
 	 * @since   1.0.0
 	 * @todo    set min and max as in product's settings
 	 * @todo    step on per product basis
@@ -261,11 +261,14 @@ class Alg_WC_Product_Open_Pricing_Core {
 				. 'value="' . $value . '" '
 				. $custom_attributes . '>';
 			// Currency symbol
-			$currency_symbol = get_woocommerce_currency_symbol();
+			$currency_symbol_template = '<span class="popfwc-currency-symbol">'.get_woocommerce_currency_symbol().'</span>';
+			$min_template = '<span class="popfwc-min">'.$min.'</span>';
+			$max_template = '<span class="popfwc-max">'.$max.'</span>';
+
 			// Output
 			echo str_replace(
-				array( '%frontend_label%', '%open_price_input%', '%currency_symbol%' ),
-				array( $title,             $input_field,         $currency_symbol ),
+				array( '%frontend_label%', '%open_price_input%', '%currency_symbol%', '%minimum_price%', '%max_price%' ),
+				array( $title, $input_field, $currency_symbol_template, $min_template, $max_template ),
 				get_option( 'alg_wc_product_open_pricing_frontend_template', '<label for="alg_open_price">%frontend_label%</label> %open_price_input% %currency_symbol%' )
 			);
 		}

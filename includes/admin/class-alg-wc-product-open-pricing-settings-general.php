@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - General Section Settings
  *
- * @version 1.1.2
+ * @version 1.1.4
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -28,7 +28,7 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 	/**
 	 * get_section_settings.
 	 *
-	 * @version 1.1.2
+	 * @version 1.1.4
 	 * @since   1.0.0
 	 * @todo    (maybe) do we need "Label" ("Template" can work for both)
 	 */
@@ -66,7 +66,7 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 			),
 			array(
 				'title'    => __( 'Frontend template', 'product-open-pricing-for-woocommerce' ),
-				'desc_tip' => __( 'Here you can use' ) . ': ' . '%frontend_label%, %open_price_input%, %currency_symbol%',
+				'desc_tip' => __( 'Here you can use' ) . ': ' . '%frontend_label%, %open_price_input%, %currency_symbol%, %minimum_price%, %max_price%',
 				'id'       => 'alg_wc_product_open_pricing_frontend_template',
 				'default'  => '<label for="alg_open_price">%frontend_label%</label> %open_price_input% %currency_symbol%',
 				'type'     => 'textarea',
