@@ -3,7 +3,7 @@ Contributors: algoritmika, anbinder, karzin
 Tags: woocommerce, product open pricing, open pricing, name your price
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,6 +31,9 @@ You can also customize price step, frontend label, template and user messages.
 3. Start by visiting plugin settings at WooCommerce > Settings > Product Open Pricing.
 
 == Changelog ==
+
+= 1.1.5 - 21/06/2018 =
+* Add option to remove up/down ticker buttons from the input field
 
 = 1.1.4 - 18/06/2018 =
 * Add %minimum_price% and %max_price% to frontend template
@@ -64,7 +67,5 @@ You can also customize price step, frontend label, template and user messages.
 
 == Upgrade Notice ==
 
-= 1.1.4 =
-* Add %minimum_price% and %max_price% to frontend template
-* Add span to %currency_symbol% template
-* Update WC tested up to
+= 1.1.5 =
+* Add option to remove up/down ticker buttons from the input field

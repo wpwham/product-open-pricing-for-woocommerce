@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.1.4
+ * @version 1.1.5
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -228,7 +228,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * add_open_price_input_field_to_frontend.
 	 *
-	 * @version 1.1.4
+	 * @version 1.1.5
 	 * @since   1.0.0
 	 * @todo    set min and max as in product's settings
 	 * @todo    step on per product basis
@@ -271,6 +271,23 @@ class Alg_WC_Product_Open_Pricing_Core {
 				array( $title, $input_field, $currency_symbol_template, $min_template, $max_template ),
 				get_option( 'alg_wc_product_open_pricing_frontend_template', '<label for="alg_open_price">%frontend_label%</label> %open_price_input% %currency_symbol%' )
 			);
+
+			// Disable step, if necessary
+			$step_enabled = get_option( 'alg_wc_product_open_pricing_enable_step', 'yes' );
+			if ( $step_enabled !== 'yes' ) {
+				?>
+				<style>
+					#alg_open_price[type='number'] {
+						-moz-appearance:textfield;
+					}
+					#alg_open_price::-webkit-outer-spin-button,
+					#alg_open_price::-webkit-inner-spin-button {
+						-webkit-appearance: none;
+						margin: 0;
+					}
+				</style>
+				<?php
+			}
 		}
 	}
 

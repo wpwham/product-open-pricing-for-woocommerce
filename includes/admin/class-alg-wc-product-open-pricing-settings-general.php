@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - General Section Settings
  *
- * @version 1.1.4
+ * @version 1.1.5
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -28,7 +28,7 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 	/**
 	 * get_section_settings.
 	 *
-	 * @version 1.1.4
+	 * @version 1.1.5
 	 * @since   1.0.0
 	 * @todo    (maybe) do we need "Label" ("Template" can work for both)
 	 */
@@ -71,6 +71,13 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'default'  => '<label for="alg_open_price">%frontend_label%</label> %open_price_input% %currency_symbol%',
 				'type'     => 'textarea',
 				'css'      => 'width:100%;',
+			),
+			array(
+				'title'    => __( 'Enable step', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Enables up/down ticker buttons from the text field', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_enable_step',
+				'default'  => 'yes',
+				'type'     => 'checkbox',
 			),
 			array(
 				'title'    => __( 'Price step', 'product-open-pricing-for-woocommerce' ),
