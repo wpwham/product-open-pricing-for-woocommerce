@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.1.5
+ * @version 1.1.6
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -16,7 +16,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.1.1
+	 * @version 1.1.6
 	 * @since   1.0.0
 	 */
 	function __construct() {
@@ -33,11 +33,66 @@ class Alg_WC_Product_Open_Pricing_Core {
 			add_filter( 'woocommerce_product_supports',           array( $this, 'disable_add_to_cart_ajax' ), PHP_INT_MAX, 3 );
 			add_filter( 'woocommerce_product_add_to_cart_url',    array( $this, 'add_to_cart_url' ), PHP_INT_MAX, 2 );
 			add_filter( 'woocommerce_product_add_to_cart_text',   array( $this, 'add_to_cart_text' ), PHP_INT_MAX, 2 );
-			add_action( 'woocommerce_before_add_to_cart_button',  array( $this, 'add_open_price_input_field_to_frontend' ), PHP_INT_MAX );
 			add_filter( 'woocommerce_add_to_cart_validation',     array( $this, 'validate_open_price_on_add_to_cart' ), PHP_INT_MAX, 2 );
 			add_filter( 'woocommerce_add_cart_item_data',         array( $this, 'add_open_price_to_cart_item_data' ), PHP_INT_MAX, 3 );
 			add_filter( 'woocommerce_add_cart_item',              array( $this, 'add_open_price_to_cart_item' ), PHP_INT_MAX, 2 );
+			add_action( 'woocommerce_before_calculate_totals',    array( $this, 'convert_price_if_using_currency_switcher' ), 10, 1 );
 			add_filter( 'woocommerce_get_cart_item_from_session', array( $this, 'get_cart_item_open_price_from_session' ), PHP_INT_MAX, 3 );
+
+			$placeholder_filter = sanitize_text_field( apply_filters( 'aopwc_frontend_input_filter', 'woocommerce_before_add_to_cart_button' ) );
+			add_action( $placeholder_filter,  array( $this, 'add_open_price_input_field_to_frontend' ), PHP_INT_MAX );
+		}
+	}
+
+	/**
+	 * Converts pricing, if using currency switcher
+	 *
+	 * @version 1.1.6
+	 * @since   1.1.6
+	 */
+	public function convert_price_if_using_currency_switcher( $cart_obj ) {
+
+		if (
+			( is_admin() && ! defined( 'DOING_AJAX' ) ) ||
+			! function_exists( 'alg_wc_currency_switcher_plugin' )
+		) {
+			return;
+		}
+		foreach ( $cart_obj->get_cart() as $key => $item ) {
+			if (
+				! isset( $item['alg_open_price_curr'] ) ||
+				! isset( $item['alg_open_price'] )
+			) {
+				continue;
+			}
+
+			$current_currency_code = alg_get_current_currency_code();
+			$default_currency      = get_option( 'woocommerce_currency' );
+
+			// Converts Back, since WooCommerce gets in the way
+			$final_value = alg_convert_price( array(
+				'price'         => $item['alg_open_price'],
+				'currency_from' => $current_currency_code,
+				'currency'      => $default_currency,
+				'format_price'  => 'no'
+			) );
+			$item['data']->set_price( $final_value );
+			$item['alg_open_price'] = $final_value;
+
+			// Converts again if different currency
+			if (
+				! empty( $item['alg_open_price_curr'] ) &&
+				$item['alg_open_price_curr'] != $current_currency_code
+			) {
+				$final_value                 = alg_convert_price( array(
+					'price'         => $item['alg_open_price'],
+					'currency_from' => $item['alg_open_price_curr'],
+					'currency'      => $current_currency_code,
+					'format_price'  => 'no'
+				) );
+				$item['alg_open_price_curr'] = $current_currency_code;
+				$item['data']->set_price( $final_value );
+			}
 		}
 	}
 
@@ -202,13 +257,18 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * add_open_price_to_cart_item_data.
 	 *
-	 * @version 1.0.0
+	 * @version 1.1.6
 	 * @since   1.0.0
 	 */
 	function add_open_price_to_cart_item_data( $cart_item_data, $product_id, $variation_id ) {
 		if ( isset( $_POST['alg_open_price'] ) ) {
 			$cart_item_data['alg_open_price'] = $_POST['alg_open_price'];
 		}
+		if ( function_exists( 'alg_wc_currency_switcher_plugin' ) ) {
+			$current_currency_code = alg_get_current_currency_code();
+			$cart_item_data['alg_open_price_curr'] = $current_currency_code;
+		}
+
 		return $cart_item_data;
 	}
 
