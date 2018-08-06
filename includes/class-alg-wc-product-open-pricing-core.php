@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.1.7
+ * @version 1.1.8
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -16,7 +16,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.1.7
+	 * @version 1.1.8
 	 * @since   1.0.0
 	 */
 	function __construct() {
@@ -38,10 +38,46 @@ class Alg_WC_Product_Open_Pricing_Core {
 			add_filter( 'woocommerce_add_cart_item',              array( $this, 'add_open_price_to_cart_item' ), PHP_INT_MAX, 2 );
 			add_action( 'woocommerce_before_calculate_totals',    array( $this, 'override_product_price' ), 10, 1 );
 			add_action( 'woocommerce_before_calculate_totals',    array( $this, 'convert_price_if_using_currency_switcher' ), 11, 1 );
+			add_action( 'aopwc_frontend_input_value',             array( $this, 'convert_min_and_max_price_if_using_currency_switcher' ), 10, 2 );
 
 			$placeholder_filter = sanitize_text_field( apply_filters( 'aopwc_frontend_input_filter', 'woocommerce_before_add_to_cart_button' ) );
 			add_action( $placeholder_filter,  array( $this, 'add_open_price_input_field_to_frontend' ), PHP_INT_MAX );
 		}
+	}
+
+	/**
+     * Converts min and max price if using currency switcher
+     *
+	 * @version 1.1.8
+	 * @since   1.1.8
+     *
+	 * @param $value
+	 * @param $value_type
+	 *
+	 * @return bool|float|int|mixed|string
+	 */
+	public function convert_min_and_max_price_if_using_currency_switcher( $value, $value_type ) {
+		if (
+			is_admin() ||
+			! function_exists( 'alg_wc_currency_switcher_plugin' ) ||
+			( $value_type != 'min' && $value_type != 'max' )
+		) {
+			return $value;
+		}
+
+		$current_currency_code = alg_get_current_currency_code();
+		$default_currency      = get_option( 'woocommerce_currency' );
+
+		// Converts Back, since WooCommerce gets in the way
+		$value = alg_convert_price( array(
+			'price'         => $value,
+			'currency_from' => $default_currency,
+			'currency'      => $current_currency_code,
+			'format_price'  => 'no'
+		) );
+		$value = alg_wc_cs_round_and_pretty( $value, $current_currency_code );
+
+		return $value;
 	}
 
 	/**
@@ -317,6 +353,9 @@ class Alg_WC_Product_Open_Pricing_Core {
 			// Min and Max
 			$min = get_post_meta( $this->get_product_or_variation_parent_id( $_product ), '_' . 'alg_wc_product_open_pricing_min_price', true );
 			$max = get_post_meta( $this->get_product_or_variation_parent_id( $_product ), '_' . 'alg_wc_product_open_pricing_max_price', true );
+
+			$min = apply_filters( 'aopwc_frontend_input_value', $min, 'min' );
+			$max = apply_filters( 'aopwc_frontend_input_value', $max, 'max' );
 
 			// The field - Custom attributes
 			$custom_attributes = '';
