@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.1.6
+ * @version 1.1.7
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -16,7 +16,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.1.6
+	 * @version 1.1.7
 	 * @since   1.0.0
 	 */
 	function __construct() {
@@ -36,8 +36,8 @@ class Alg_WC_Product_Open_Pricing_Core {
 			add_filter( 'woocommerce_add_to_cart_validation',     array( $this, 'validate_open_price_on_add_to_cart' ), PHP_INT_MAX, 2 );
 			add_filter( 'woocommerce_add_cart_item_data',         array( $this, 'add_open_price_to_cart_item_data' ), PHP_INT_MAX, 3 );
 			add_filter( 'woocommerce_add_cart_item',              array( $this, 'add_open_price_to_cart_item' ), PHP_INT_MAX, 2 );
-			add_action( 'woocommerce_before_calculate_totals',    array( $this, 'convert_price_if_using_currency_switcher' ), 10, 1 );
-			add_filter( 'woocommerce_get_cart_item_from_session', array( $this, 'get_cart_item_open_price_from_session' ), PHP_INT_MAX, 3 );
+			add_action( 'woocommerce_before_calculate_totals',    array( $this, 'override_product_price' ), 10, 1 );
+			add_action( 'woocommerce_before_calculate_totals',    array( $this, 'convert_price_if_using_currency_switcher' ), 11, 1 );
 
 			$placeholder_filter = sanitize_text_field( apply_filters( 'aopwc_frontend_input_filter', 'woocommerce_before_add_to_cart_button' ) );
 			add_action( $placeholder_filter,  array( $this, 'add_open_price_input_field_to_frontend' ), PHP_INT_MAX );
@@ -45,20 +45,45 @@ class Alg_WC_Product_Open_Pricing_Core {
 	}
 
 	/**
+     * Overrides product price
+     *
+	 * @version 1.1.7
+	 * @since   1.1.7
+     *
+	 * @param $cart_obj
+	 */
+	public function override_product_price( $cart_obj ) {
+		if ( is_admin() ) {
+			return;
+		}
+		foreach ( $cart_obj->get_cart() as $key => $item ) {
+			if ( ! isset( $item['alg_open_price'] ) ) {
+				continue;
+			}
+
+			$final_value = $item['alg_open_price'];
+			$item['data']->set_price( $final_value );
+			$item['alg_open_price'] = $final_value;
+		}
+	}
+
+	/**
 	 * Converts pricing, if using currency switcher
 	 *
-	 * @version 1.1.6
+	 * @version 1.1.7
 	 * @since   1.1.6
 	 */
 	public function convert_price_if_using_currency_switcher( $cart_obj ) {
 
 		if (
-			( is_admin() && ! defined( 'DOING_AJAX' ) ) ||
+			is_admin() ||
 			! function_exists( 'alg_wc_currency_switcher_plugin' )
 		) {
 			return;
 		}
+
 		foreach ( $cart_obj->get_cart() as $key => $item ) {
+
 			if (
 				! isset( $item['alg_open_price_curr'] ) ||
 				! isset( $item['alg_open_price'] )
@@ -92,6 +117,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 				) );
 				$item['alg_open_price_curr'] = $current_currency_code;
 				$item['data']->set_price( $final_value );
+				$item['alg_open_price'] = $final_value;
 			}
 		}
 	}
@@ -239,19 +265,6 @@ class Alg_WC_Product_Open_Pricing_Core {
 			}
 		}
 		return $passed;
-	}
-
-	/**
-	 * get_cart_item_open_price_from_session.
-	 *
-	 * @version 1.0.0
-	 * @since   1.0.0
-	 */
-	function get_cart_item_open_price_from_session( $item, $values, $key ) {
-		if ( array_key_exists( 'alg_open_price', $values ) ) {
-			$item['data']->alg_open_price = $values['alg_open_price'];
-		}
-		return $item;
 	}
 
 	/**
