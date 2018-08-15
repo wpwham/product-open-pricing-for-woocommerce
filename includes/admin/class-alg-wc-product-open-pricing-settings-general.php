@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - General Section Settings
  *
- * @version 1.1.5
+ * @version 1.1.9
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -28,7 +28,7 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 	/**
 	 * get_section_settings.
 	 *
-	 * @version 1.1.5
+	 * @version 1.1.9
 	 * @since   1.0.0
 	 * @todo    (maybe) do we need "Label" ("Template" can work for both)
 	 */
@@ -53,9 +53,16 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'id'       => 'alg_wc_product_open_pricing_options',
 			),
 			array(
-				'title'    => __( 'Options', 'product-open-pricing-for-woocommerce' ),
+				'title'    => __( 'General Options', 'product-open-pricing-for-woocommerce' ),
 				'type'     => 'title',
 				'id'       => 'alg_wc_product_open_pricing_messages_options',
+			),
+			array(
+				'title'    => __( 'Display on loop', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Displays the open pricing input field on loop pages', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_field_on_loop',
+				'default'  => 'no',
+				'type'     => 'checkbox',
 			),
 			array(
 				'title'    => __( 'Frontend label', 'product-open-pricing-for-woocommerce' ),

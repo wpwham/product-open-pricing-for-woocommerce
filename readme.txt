@@ -3,7 +3,7 @@ Contributors: algoritmika, anbinder, karzin
 Tags: woocommerce, product open pricing, open pricing, name your price
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 1.1.8
+Stable tag: 1.1.9
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,6 +31,11 @@ You can also customize price step, frontend label, template and user messages.
 3. Start by visiting plugin settings at WooCommerce > Settings > Product Open Pricing.
 
 == Changelog ==
+
+= 1.1.9 - 14/08/2018 =
+* Add option to include open input field on loop
+* Improve open price input sanitizing
+* Add compatibility with ajax add to cart
 
 = 1.1.8 - 06/08/2018 =
 * Improve compatibility with Currency Switcher for WooCommerce plugin converting min and max value
@@ -78,5 +83,5 @@ You can also customize price step, frontend label, template and user messages.
 
 == Upgrade Notice ==
 
-= 1.1.8 =
-* Improve compatibility with Currency Switcher for WooCommerce plugin converting min and max value
+= 1.1.9 =
+* Add option to include open input field on loop
