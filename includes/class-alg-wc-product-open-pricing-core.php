@@ -18,8 +18,6 @@ class Alg_WC_Product_Open_Pricing_Core {
 	 *
 	 * @version 1.1.9
 	 * @since   1.0.0
-     * @todo    Improve label
-     * @todo    Differentiate single from loop template
 	 */
 	function __construct() {
 		if ( 'yes' === get_option( 'alg_wc_product_open_pricing_enabled', 'yes' ) ) {
@@ -39,8 +37,8 @@ class Alg_WC_Product_Open_Pricing_Core {
 			add_filter( 'woocommerce_add_cart_item_data',         array( $this, 'add_open_price_to_cart_item_data' ), PHP_INT_MAX, 3 );
 			add_filter( 'woocommerce_add_cart_item',              array( $this, 'add_open_price_to_cart_item' ), PHP_INT_MAX, 2 );
 			add_action( 'woocommerce_before_calculate_totals',    array( $this, 'override_product_price' ), 10, 1 );
-			add_action( 'woocommerce_before_calculate_totals',    array( $this, 'convert_price_if_using_currency_switcher' ), 11, 1 );
-			add_action( 'aopwc_frontend_input_value',             array( $this, 'convert_min_and_max_price_if_using_currency_switcher' ), 10, 2 );
+			add_action( 'woocommerce_before_calculate_totals',    array( $this, 'convert_before_calculate_totals_currency_switcher' ), 11, 1 );
+			add_action( 'aopwc_value',                            array( $this, 'convert_price_currency_switcher' ), 10, 2 );
 			add_filter( 'woocommerce_loop_add_to_cart_link',      array( $this, 'add_attribute_on_add_to_cart_button' ), 10, 3 );
 			add_action( 'wp_footer',                              array( $this, 'sync_add_to_cart_button_attribute' ) );
 
@@ -160,11 +158,11 @@ class Alg_WC_Product_Open_Pricing_Core {
 	 *
 	 * @return bool|float|int|mixed|string
 	 */
-	public function convert_min_and_max_price_if_using_currency_switcher( $value, $value_type ) {
+	public function convert_price_currency_switcher( $value, $value_type ) {
 		if (
 			is_admin() ||
 			! function_exists( 'alg_wc_currency_switcher_plugin' ) ||
-			( $value_type != 'min' && $value_type != 'max' )
+			( $value_type != 'min' && $value_type != 'max' && $value_type != 'value' )
 		) {
 			return $value;
 		}
@@ -213,7 +211,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	 * @version 1.1.7
 	 * @since   1.1.6
 	 */
-	public function convert_price_if_using_currency_switcher( $cart_obj ) {
+	public function convert_before_calculate_totals_currency_switcher( $cart_obj ) {
 
 		if (
 			is_admin() ||
@@ -399,6 +397,10 @@ class Alg_WC_Product_Open_Pricing_Core {
 		if ( $this->is_open_price_product( $_product ) ) {
 			$min_price = get_post_meta( $product_id, '_' . 'alg_wc_product_open_pricing_min_price', true );
 			$max_price = get_post_meta( $product_id, '_' . 'alg_wc_product_open_pricing_max_price', true );
+
+			$min_price = apply_filters( 'aopwc_value', $min_price, 'min' );
+			$max_price = apply_filters( 'aopwc_value', $max_price, 'max' );
+
 			if ( $min_price > 0 ) {
 				if ( ! isset( $_REQUEST['alg_open_price'] ) || '' === $_REQUEST['alg_open_price'] ) {
 					wc_add_notice( get_option( 'alg_wc_product_open_pricing_messages_required', __( 'Price is required!', 'product-open-pricing-for-woocommerce' ) ), 'error' );
@@ -466,29 +468,36 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * add_open_price_input_field_to_frontend.
 	 *
-	 * @version 1.1.5
+	 * @version 1.1.9
 	 * @since   1.0.0
-	 * @todo    set min and max as in product's settings
 	 * @todo    step on per product basis
 	 */
 	function add_open_price_input_field_to_frontend() {
 		$_product = wc_get_product();
 		if ( $this->is_open_price_product( $_product ) ) {
-			// Title
-			$title = get_option( 'alg_wc_product_open_pricing_label_frontend', __( 'Name Your Price', 'product-open-pricing-for-woocommerce' ) );
+			$product_id = $this->get_product_or_variation_parent_id( $_product );
+
+			$is_loop = ( strpos( current_filter(), 'loop' ) !== false ) ? true : false;
+
 			// The field - Value
 			if ( is_product() ) {
-				$value = ( isset( $_REQUEST['alg_open_price'] ) ) ? $this->sanitize_open_price( $_REQUEST['alg_open_price'] ) : get_post_meta( $this->get_product_or_variation_parent_id( $_product ), '_' . 'alg_wc_product_open_pricing_default_price', true );
+				$value = ( isset( $_REQUEST['alg_open_price'] ) ) ? $this->sanitize_open_price( $_REQUEST['alg_open_price'] ) : get_post_meta( $product_id, '_' . 'alg_wc_product_open_pricing_default_price', true );
 			} else {
-				$value = get_post_meta( $this->get_product_or_variation_parent_id( $_product ), '_' . 'alg_wc_product_open_pricing_default_price', true );
+				$value = get_post_meta( $product_id, '_' . 'alg_wc_product_open_pricing_default_price', true );
 			}
 
-			// Min and Max
-			$min = get_post_meta( $this->get_product_or_variation_parent_id( $_product ), '_' . 'alg_wc_product_open_pricing_min_price', true );
-			$max = get_post_meta( $this->get_product_or_variation_parent_id( $_product ), '_' . 'alg_wc_product_open_pricing_max_price', true );
+			if ( ! empty( $value ) ) {
+				$value = apply_filters( 'aopwc_value', $value, 'value' );
+			}
 
-			$min = apply_filters( 'aopwc_frontend_input_value', $min, 'min' );
-			$max = apply_filters( 'aopwc_frontend_input_value', $max, 'max' );
+			$input_id = "alg_open_price_".$product_id;
+
+			// Min and Max
+			$min = get_post_meta( $product_id, '_' . 'alg_wc_product_open_pricing_min_price', true );
+			$max = get_post_meta( $product_id, '_' . 'alg_wc_product_open_pricing_max_price', true );
+
+			$min = apply_filters( 'aopwc_value', $min, 'min' );
+			$max = apply_filters( 'aopwc_value', $max, 'max' );
 
 			// The field - Custom attributes
 			$custom_attributes = '';
@@ -499,11 +508,11 @@ class Alg_WC_Product_Open_Pricing_Core {
 			// The field - Final assembly
 			$input_field = '<input '
 				. 'type="number" '
-                . 'data-product_id="'.$this->get_product_or_variation_parent_id( $_product ).'" '
+                . 'data-product_id="'.$product_id.'" '
 				. 'class="alg_open_price text" '
 				. 'style="width:75px;text-align:center;" '
 				. 'name="alg_open_price" '
-				. 'id="alg_open_price" '
+				. 'id="'.$input_id.'" '
 				. 'value="' . $value . '" '
 				. $custom_attributes . '>';
 			// Currency symbol
@@ -511,11 +520,23 @@ class Alg_WC_Product_Open_Pricing_Core {
 			$min_template = '<span class="popfwc-min">'.$min.'</span>';
 			$max_template = '<span class="popfwc-max">'.$max.'</span>';
 
+			//%frontend_label%
+
+			$template_single = get_option( 'alg_wc_product_open_pricing_frontend_template', '<label for="%input_id%">' . __( 'Name Your Price', 'product-open-pricing-for-woocommerce' ) . '</label> %open_price_input% %currency_symbol%' );
+			$template        = $template_single;
+			if ( $is_loop ) {
+				$template_loop = get_option( 'alg_wc_product_open_pricing_frontend_loop_template', '<label for="%input_id%">' . __( 'Name Your Price', 'product-open-pricing-for-woocommerce' ) . '</label> %open_price_input% %currency_symbol%' );
+				$template      = empty( $template_loop ) ? $template_single : $template_loop;
+			}
+
+			// Title is not being used anymore, but maintained in code for compatibility
+			$title = get_option( 'alg_wc_product_open_pricing_label_frontend', __( 'Name Your Price', 'product-open-pricing-for-woocommerce' ) );
+
 			// Output
 			echo str_replace(
-				array( '%frontend_label%', '%open_price_input%', '%currency_symbol%', '%minimum_price%', '%max_price%' ),
-				array( $title, $input_field, $currency_symbol_template, $min_template, $max_template ),
-				get_option( 'alg_wc_product_open_pricing_frontend_template', '<label for="alg_open_price">%frontend_label%</label> %open_price_input% %currency_symbol%' )
+				array( '%input_id%', '%open_price_input%', '%currency_symbol%', '%minimum_price%', '%max_price%', '%frontend_label%' ),
+				array( $input_id, $input_field, $currency_symbol_template, $min_template, $max_template, $title ),
+				$template
 			);
 
 			// Disable step, if necessary

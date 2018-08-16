@@ -32,10 +32,14 @@ You can also customize price step, frontend label, template and user messages.
 
 == Changelog ==
 
-= 1.1.9 - 14/08/2018 =
+= 1.1.9 - 16/08/2018 =
 * Add option to include open input field on loop
+* Add option to overwrite frontend template option if input field is displayed on loop
 * Improve open price input sanitizing
-* Add compatibility with ajax add to cart
+* Add compatibility with ajax add to cart if loop option is enabled
+* Remove Frontend Label option
+* Fix min/max prices when using currency switcher
+* Rearrange message options on admin
 
 = 1.1.8 - 06/08/2018 =
 * Improve compatibility with Currency Switcher for WooCommerce plugin converting min and max value
@@ -85,3 +89,9 @@ You can also customize price step, frontend label, template and user messages.
 
 = 1.1.9 =
 * Add option to include open input field on loop
+* Add option to overwrite frontend template option if input field is displayed on loop
+* Improve open price input sanitizing
+* Add compatibility with ajax add to cart if loop option is enabled
+* Remove Frontend Label option
+* Fix min/max prices when using currency switcher
+* Rearrange message options on admin
