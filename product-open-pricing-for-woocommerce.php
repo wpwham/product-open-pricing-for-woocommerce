@@ -3,7 +3,7 @@
 Plugin Name: Product Open Pricing (Name Your Price) for WooCommerce
 Plugin URI: https://wpcodefactory.com/item/product-open-pricing-woocommerce/
 Description: Open price (i.e. Name your price) products for WooCommerce.
-Version: 1.1.9
+Version: 1.2.0
 Author: Algoritmika Ltd
 Author URI: http://www.algoritmika.com
 Text Domain: product-open-pricing-for-woocommerce

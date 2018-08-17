@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.1.8
+ * @version 1.2.0
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -16,7 +16,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.1.9
+	 * @version 1.2.0
 	 * @since   1.0.0
 	 */
 	function __construct() {
@@ -39,7 +39,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 			add_action( 'woocommerce_before_calculate_totals',    array( $this, 'override_product_price' ), 10, 1 );
 			add_action( 'woocommerce_before_calculate_totals',    array( $this, 'convert_before_calculate_totals_currency_switcher' ), 11, 1 );
 			add_action( 'aopwc_value',                            array( $this, 'convert_price_currency_switcher' ), 10, 2 );
-			add_filter( 'woocommerce_loop_add_to_cart_link',      array( $this, 'add_attribute_on_add_to_cart_button' ), 10, 3 );
+			add_filter( 'woocommerce_loop_add_to_cart_link',      array( $this, 'add_attribute_on_add_to_cart_button' ), 10, 2 );
 			add_action( 'wp_footer',                              array( $this, 'sync_add_to_cart_button_attribute' ) );
 
 			// Frontend filter on Single Product Page
@@ -103,16 +103,15 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
      * Adds attribute data-alg_open_price on 'Add to Cart' button on loop pages
      *
-	 * @version 1.1.9
+	 * @version 1.2.0
 	 * @since   1.1.9
      *
 	 * @param $link
 	 * @param $product
-	 * @param $args
 	 *
 	 * @return string
 	 */
-	public function add_attribute_on_add_to_cart_button( $link, $product, $args ) {
+	public function add_attribute_on_add_to_cart_button( $link, $product ) {
 		if (
 			'yes' !== get_option( 'alg_wc_product_open_pricing_field_on_loop', 'no' ) ||
 			! $this->is_open_price_product( $product )
