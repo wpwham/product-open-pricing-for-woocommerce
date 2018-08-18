@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.2.0
+ * @version 1.2.1
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -423,14 +423,14 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
      * Sanitizes open price input value
      *
-	 * @version 1.1.9
+	 * @version 1.2.1
 	 * @since   1.1.9
 	 * @param $open_price
 	 *
 	 * @return mixed
 	 */
 	function sanitize_open_price( $open_price ) {
-		return filter_var( sanitize_text_field( $open_price ), FILTER_SANITIZE_NUMBER_INT );
+		return filter_var( sanitize_text_field( $open_price ), FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 	}
 
 	/**
