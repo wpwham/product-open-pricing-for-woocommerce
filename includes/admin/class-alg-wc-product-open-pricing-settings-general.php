@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - General Section Settings
  *
- * @version 1.1.9
+ * @version 1.2.2
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -28,7 +28,7 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 	/**
 	 * get_section_settings.
 	 *
-	 * @version 1.1.9
+	 * @version 1.2.2
 	 * @since   1.0.0
 	 */
 	function get_section_settings() {
@@ -86,6 +86,13 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'type'     => 'checkbox',
 			),
 			array(
+				'title'    => __( 'Increase price', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Increase price instead of replacing it', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_increase_price',
+				'default'  => 'no',
+				'type'     => 'checkbox',
+			),
+			array(
 				'type'     => 'sectionend',
 				'id'       => 'alg_wc_product_open_pricing_messages_options',
 			),
@@ -98,21 +105,21 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'id'       => 'alg_wc_product_open_pricing_messages',
 			),
 			array(
-				'title'    => __( 'Message on empty price', 'product-open-pricing-for-woocommerce' ),
+				'title'    => __( 'Empty price', 'product-open-pricing-for-woocommerce' ),
 				'id'       => 'alg_wc_product_open_pricing_messages_required',
 				'default'  => __( 'Price is required!', 'product-open-pricing-for-woocommerce' ),
 				'type'     => 'text',
 				'css'      => 'width:100%;',
 			),
 			array(
-				'title'    => __( 'Message on price too small', 'product-open-pricing-for-woocommerce' ),
+				'title'    => __( 'Price too small', 'product-open-pricing-for-woocommerce' ),
 				'id'       => 'alg_wc_product_open_pricing_messages_too_small',
 				'default'  => __( 'Entered price is too small!', 'product-open-pricing-for-woocommerce' ),
 				'type'     => 'text',
 				'css'      => 'width:100%;',
 			),
 			array(
-				'title'    => __( 'Message on price too big', 'product-open-pricing-for-woocommerce' ),
+				'title'    => __( 'Price too big', 'product-open-pricing-for-woocommerce' ),
 				'id'       => 'alg_wc_product_open_pricing_messages_too_big',
 				'default'  => __( 'Entered price is too big!', 'product-open-pricing-for-woocommerce' ),
 				'type'     => 'text',

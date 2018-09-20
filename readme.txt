@@ -3,7 +3,7 @@ Contributors: algoritmika, anbinder, karzin
 Tags: woocommerce, product open pricing, open pricing, name your price
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,6 +31,9 @@ You can also customize price step, frontend label, template and user messages.
 3. Start by visiting plugin settings at WooCommerce > Settings > Product Open Pricing.
 
 == Changelog ==
+
+= 1.2.2 - 24/08/2018 =
+* Add option to increase product price instead of replacing it
 
 = 1.2.1 - 18/08/2018 =
 * Fix input sanitizing
@@ -93,5 +96,5 @@ You can also customize price step, frontend label, template and user messages.
 
 == Upgrade Notice ==
 
-= 1.2.1 =
-* Fix input sanitizing
+= 1.2.2 =
+* Add option to increase product price instead of replacing it
