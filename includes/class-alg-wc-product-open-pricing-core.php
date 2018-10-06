@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.2.1
+ * @version 1.2.2
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -211,7 +211,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	 * @version 1.1.7
 	 * @since   1.1.6
 	 */
-	/*public function convert_before_calculate_totals_currency_switcher( $cart_obj ) {
+	public function convert_before_calculate_totals_currency_switcher( $cart_obj ) {
 
 		if (
 			is_admin() ||
@@ -258,7 +258,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 				$item['alg_open_price'] = $final_value;
 			}
 		}
-	}*/
+	}
 
 	/**
 	 * get_product_or_variation_parent_id.
@@ -468,7 +468,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * add_open_price_input_field_to_frontend.
 	 *
-	 * @version 1.1.9
+	 * @version 1.2.2
 	 * @since   1.0.0
 	 * @todo    step on per product basis
 	 */
@@ -481,15 +481,10 @@ class Alg_WC_Product_Open_Pricing_Core {
 
 			// The field - Value
 			if ( is_product() ) {
-				$value = ( isset( $_REQUEST['alg_open_price'] ) ) ? $this->sanitize_open_price( $_REQUEST['alg_open_price'] ) : get_post_meta( $product_id, '_' . 'alg_wc_product_open_pricing_default_price', true );
+				$value = ( isset( $_REQUEST['alg_open_price'] ) ) ? $this->sanitize_open_price( $_REQUEST['alg_open_price'] ) : apply_filters( 'aopwc_value', get_post_meta( $product_id, '_' . 'alg_wc_product_open_pricing_default_price', true ), 'value' );
 			} else {
-				$value = get_post_meta( $product_id, '_' . 'alg_wc_product_open_pricing_default_price', true );
+				$value = apply_filters( 'aopwc_value', get_post_meta( $product_id, '_' . 'alg_wc_product_open_pricing_default_price', true ), 'value' );
 			}
-
-			if ( ! empty( $value ) ) {
-				$value = apply_filters( 'aopwc_value', $value, 'value', 'default' );
-			}
-
 			$input_id = "alg_open_price_".$product_id;
 
 			// Min and Max

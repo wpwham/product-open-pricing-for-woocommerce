@@ -54,7 +54,7 @@ final class Alg_WC_Product_Open_Pricing {
 	 * @var   string
 	 * @since 1.0.0
 	 */
-	public $version = '1.1.9';
+	public $version = '1.2.2';
 
 	/**
 	 * @var   Alg_WC_Product_Open_Pricing The single instance of the class

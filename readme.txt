@@ -32,8 +32,9 @@ You can also customize price step, frontend label, template and user messages.
 
 == Changelog ==
 
-= 1.2.2 - 24/08/2018 =
+= 1.2.2 - 20/09/2018 =
 * Add option to increase product price instead of replacing it
+* Fix compatibility with Currency Switcher on getting value from request
 
 = 1.2.1 - 18/08/2018 =
 * Fix input sanitizing
@@ -98,3 +99,4 @@ You can also customize price step, frontend label, template and user messages.
 
 = 1.2.2 =
 * Add option to increase product price instead of replacing it
+* Fix compatibility with Currency Switcher on getting value from request
