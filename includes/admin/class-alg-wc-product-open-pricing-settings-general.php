@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - General Section Settings
  *
- * @version 1.1.9
+ * @version 1.2.2
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -28,7 +28,7 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 	/**
 	 * get_section_settings.
 	 *
-	 * @version 1.1.9
+	 * @version 1.2.2
 	 * @since   1.0.0
 	 */
 	function get_section_settings() {
@@ -82,6 +82,13 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'title'    => __( 'Disable quantity selector', 'product-open-pricing-for-woocommerce' ),
 				'desc'     => __( 'Disable', 'product-open-pricing-for-woocommerce' ),
 				'id'       => 'alg_wc_product_open_pricing_disable_qty',
+				'default'  => 'yes',
+				'type'     => 'checkbox',
+			),
+			array(
+				'title'    => __( 'Hide price', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Hides original price on single product page', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_hide_price',
 				'default'  => 'yes',
 				'type'     => 'checkbox',
 			),
@@ -145,6 +152,13 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'default'  => '<label for="%input_id%">'.__( 'Name Your Price', 'product-open-pricing-for-woocommerce' ).'</label> %open_price_input% %currency_symbol%',
 				'type'     => 'textarea',
 				'css'      => 'width:100%;',
+			),
+			array(
+				'title'    => __( 'Hide price', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Hides original price on loop', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_loop_hide_price',
+				'default'  => 'yes',
+				'type'     => 'checkbox',
 			),
 			array(
 				'type'     => 'sectionend',
