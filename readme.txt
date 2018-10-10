@@ -98,4 +98,5 @@ You can also customize price step, frontend label, template and user messages.
 == Upgrade Notice ==
 
 = 1.2.2 =
+* Fix compatibility with Currency Switcher on getting value from request
 * Add option to display original price on both loop and single product page
