@@ -3,7 +3,7 @@ Contributors: algoritmika, anbinder, karzin
 Tags: woocommerce, product open pricing, open pricing, name your price
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,6 +21,13 @@ For each product you can set:
 
 You can also customize price step, frontend label, template and user messages.
 
+It's important to note the free version allows enabling open pricing for only one product at a time.
+
+== Premium ==
+The premium version will allow setting open pricing on multiple products without restrictions.
+
+[Upgrade to Pro](https://wpfactory.com/item/product-open-pricing-woocommerce/ "Upgrade to Product Open Pricing for WooCommerce Pro")
+
 = Feedback =
 * We are open to your suggestions and feedback. Thank you for using or trying out one of our plugins!
 
@@ -31,6 +38,9 @@ You can also customize price step, frontend label, template and user messages.
 3. Start by visiting plugin settings at WooCommerce > Settings > Product Open Pricing.
 
 == Changelog ==
+
+= 1.2.3 - 21/10/2018 =
+* Add warning on description about free version restriction which allows open pricing for only one product at a time.
 
 = 1.2.2 - 09/10/2018 =
 * Fix compatibility with Currency Switcher on getting value from request
@@ -97,6 +107,5 @@ You can also customize price step, frontend label, template and user messages.
 
 == Upgrade Notice ==
 
-= 1.2.2 =
-* Fix compatibility with Currency Switcher on getting value from request
-* Add option to display original price on both loop and single product page
+= 1.2.3 =
+* Add warning on description about free version restriction which allows open pricing for only one product at a time.
