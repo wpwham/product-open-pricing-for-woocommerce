@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - General Section Settings
  *
- * @version 1.2.2
+ * @version 1.2.4
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -28,7 +28,7 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 	/**
 	 * get_section_settings.
 	 *
-	 * @version 1.2.2
+	 * @version 1.2.4
 	 * @since   1.0.0
 	 */
 	function get_section_settings() {
@@ -65,8 +65,9 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'css'      => 'width:100%;',
 			),
 			array(
-				'title'    => __( 'Enable step', 'product-open-pricing-for-woocommerce' ),
-				'desc'     => __( 'Enables up/down ticker buttons from the text field', 'product-open-pricing-for-woocommerce' ),
+				'title'    => __( 'Enable step ticker', 'product-open-pricing-for-woocommerce' ),
+				'desc_tip' => __( 'Enable', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Enables up/down ticker buttons from the text field.', 'product-open-pricing-for-woocommerce' ),
 				'id'       => 'alg_wc_product_open_pricing_enable_step',
 				'default'  => 'yes',
 				'type'     => 'checkbox',

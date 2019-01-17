@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.2.2
+ * @version 1.2.4
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -478,7 +478,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * add_open_price_input_field_to_frontend.
 	 *
-	 * @version 1.2.2
+	 * @version 1.2.4
 	 * @since   1.0.0
 	 * @todo    step on per product basis
 	 */
@@ -550,11 +550,11 @@ class Alg_WC_Product_Open_Pricing_Core {
 			if ( $step_enabled !== 'yes' ) {
 				?>
 				<style>
-					#alg_open_price[type='number'] {
+					.alg_open_price[type='number'] {
 						-moz-appearance:textfield;
 					}
-					#alg_open_price::-webkit-outer-spin-button,
-					#alg_open_price::-webkit-inner-spin-button {
+					.alg_open_price::-webkit-outer-spin-button,
+					.alg_open_price::-webkit-inner-spin-button {
 						-webkit-appearance: none;
 						margin: 0;
 					}
