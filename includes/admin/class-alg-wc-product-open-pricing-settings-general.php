@@ -66,8 +66,8 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 			),
 			array(
 				'title'    => __( 'Enable step ticker', 'product-open-pricing-for-woocommerce' ),
-				'desc_tip' => __( 'Enable', 'product-open-pricing-for-woocommerce' ),
-				'desc'     => __( 'Enables up/down ticker buttons from the text field.', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Enable', 'product-open-pricing-for-woocommerce' ),
+				'desc_tip' => __( 'Enables up/down ticker buttons from the text field.', 'product-open-pricing-for-woocommerce' ),
 				'id'       => 'alg_wc_product_open_pricing_enable_step',
 				'default'  => 'yes',
 				'type'     => 'checkbox',
