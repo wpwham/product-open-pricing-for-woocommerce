@@ -42,7 +42,7 @@ The premium version will allow setting open pricing on multiple products without
 = 1.2.5 - 29/01/2019 =
 -* Dev - "Input style" option added.
 -* Dev - "Input pattern" option added.
--* Dev - Admin settings restyled and descriptions updated.
+~* Dev - Admin settings restyled and descriptions updated.
 * Dev - Plugin URI updated.
 
 = 1.2.4 - 17/01/2019 =

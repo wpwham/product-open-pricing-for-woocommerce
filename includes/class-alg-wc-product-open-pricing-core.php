@@ -136,7 +136,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 			$node->setAttribute( "href", $product_link);
 			if ( ! empty( $value ) ) {
 				$href = $node->getAttribute( "href" );
-				if(strpos($href, 'alg_open_price') === false){
+				if ( false === strpos( $href, 'alg_open_price' ) ) {
 					$node->setAttribute( "href", $href . '&alg_open_price=' . $value );
 				}
 			}

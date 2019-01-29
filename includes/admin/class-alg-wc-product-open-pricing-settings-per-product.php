@@ -93,7 +93,7 @@ class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
 	/**
 	 * get_meta_box_options.
 	 *
-	 * @version 1.0.0
+	 * @version 1.2.5
 	 * @since   1.0.0
 	 */
 	function get_meta_box_options() {
@@ -112,20 +112,20 @@ class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
 				'name'       => 'alg_wc_product_open_pricing_default_price',
 				'default'    => '',
 				'type'       => 'price',
-				'title'      => __( 'Default Price', 'product-open-pricing-for-woocommerce' ) . ' (' . get_woocommerce_currency_symbol() . ')',
+				'title'      => __( 'Default price', 'product-open-pricing-for-woocommerce' ) . ' (' . get_woocommerce_currency_symbol() . ')',
 				'tooltip'    => __( 'Default (i.e. Suggested) price', 'product-open-pricing-for-woocommerce' ),
 			),
 			array(
 				'name'       => 'alg_wc_product_open_pricing_min_price',
 				'default'    => 1,
 				'type'       => 'price',
-				'title'      => __( 'Min Price', 'product-open-pricing-for-woocommerce' ) . ' (' . get_woocommerce_currency_symbol() . ')',
+				'title'      => __( 'Min price', 'product-open-pricing-for-woocommerce' ) . ' (' . get_woocommerce_currency_symbol() . ')',
 			),
 			array(
 				'name'       => 'alg_wc_product_open_pricing_max_price',
 				'default'    => '',
 				'type'       => 'price',
-				'title'      => __( 'Max Price', 'product-open-pricing-for-woocommerce' ) . ' (' . get_woocommerce_currency_symbol() . ')',
+				'title'      => __( 'Max price', 'product-open-pricing-for-woocommerce' ) . ' (' . get_woocommerce_currency_symbol() . ')',
 			),
 		);
 		return $options;
@@ -177,7 +177,7 @@ class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
 	/**
 	 * create_meta_box.
 	 *
-	 * @version 1.0.0
+	 * @version 1.2.5
 	 * @since   1.0.0
 	 */
 	function create_meta_box() {
@@ -245,7 +245,7 @@ class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
 					}
 					$html .= '<tr>';
 					$maybe_tooltip = ( isset( $option['tooltip'] ) && '' != $option['tooltip'] ) ?
-						' <img style="display:inline;" class="alg-question-icon" src="' . alg_wc_product_open_pricing()->plugin_url() . '/assets/images/question-icon.png' . '" title="' . $option['tooltip'] . '">' :
+						'<span style="float:right;">' . wc_help_tip( $option['tooltip'], true ) . '</span>' :
 						'';
 					$html .= '<th style="text-align:left;width:150px;">' . $option['title'] . $maybe_tooltip . '</th>';
 					if ( isset( $option['desc'] ) && '' != $option['desc'] ) {
