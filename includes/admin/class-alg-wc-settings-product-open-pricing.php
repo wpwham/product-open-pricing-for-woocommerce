@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Settings
  *
- * @version 1.1.0
+ * @version 1.2.5
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -16,13 +16,24 @@ class Alg_WC_Settings_Product_Open_Pricing extends WC_Settings_Page {
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.0.0
+	 * @version 1.2.5
 	 * @since   1.0.0
 	 */
 	function __construct() {
 		$this->id    = 'alg_wc_product_open_pricing';
 		$this->label = __( 'Product Open Pricing', 'product-open-pricing-for-woocommerce' );
 		parent::__construct();
+		add_filter( 'woocommerce_admin_settings_sanitize_option', array( $this, 'maybe_unsanitize_option' ), PHP_INT_MAX, 3 );
+	}
+
+	/**
+	 * maybe_unsanitize_option.
+	 *
+	 * @version 1.2.5
+	 * @since   1.2.5
+	 */
+	function maybe_unsanitize_option( $value, $option, $raw_value ) {
+		return ( ! empty( $option['alg_wc_pop_raw'] ) ? $raw_value : $value );
 	}
 
 	/**
@@ -41,6 +52,8 @@ class Alg_WC_Settings_Product_Open_Pricing extends WC_Settings_Page {
 	 *
 	 * @version 1.1.0
 	 * @since   1.0.0
+	 * @todo    [dev] add "Settings have been reset" admin notice
+	 * @todo    [dev] remove `add_option`
 	 */
 	function maybe_reset_settings() {
 		global $current_section;

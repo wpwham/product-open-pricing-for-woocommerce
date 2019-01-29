@@ -123,6 +123,7 @@ final class Alg_WC_Product_Open_Pricing {
 	 *
 	 * @version 1.1.2
 	 * @since   1.0.0
+	 * @todo    [dev] remove `add_option`
 	 */
 	function includes() {
 		// Settings

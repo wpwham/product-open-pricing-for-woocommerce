@@ -65,6 +65,22 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'css'      => 'width:100%;',
 			),
 			array(
+				'title'    => __( 'Input style', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_input_style',
+				'default'  => 'width:75px;text-align:center;',
+				'type'     => 'text',
+				'alg_wc_pop_raw' => true,
+			),
+			array(
+				'title'    => __( 'Input pattern', 'product-open-pricing-for-woocommerce' ),
+				'desc_tip' => sprintf( __( 'For backslash use %s, e.g.: %s', 'product-open-pricing-for-woocommerce' ),
+					'<strong><em>%backslash%</em></strong>', '<strong><em>%backslash%d*</em></strong>' ),
+				'id'       => 'alg_wc_product_open_pricing_input_pattern',
+				'default'  => '',
+				'type'     => 'text',
+				'alg_wc_pop_raw' => true,
+			),
+			array(
 				'title'    => __( 'Enable step ticker', 'product-open-pricing-for-woocommerce' ),
 				'desc'     => __( 'Enable', 'product-open-pricing-for-woocommerce' ),
 				'desc_tip' => __( 'Enables up/down ticker buttons for the input field.', 'product-open-pricing-for-woocommerce' ),
