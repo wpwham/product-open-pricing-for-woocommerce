@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.2.4
+ * @version 1.2.5
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -478,7 +478,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * add_open_price_input_field_to_frontend.
 	 *
-	 * @version 1.2.4
+	 * @version 1.2.5
 	 * @since   1.0.0
 	 * @todo    step on per product basis
 	 */
@@ -517,10 +517,11 @@ class Alg_WC_Product_Open_Pricing_Core {
 				. 'type="number" '
 				. 'data-product_id="'.$product_id.'" '
 				. 'class="alg_open_price text" '
-				. 'style="width:75px;text-align:center;" '
+				. 'style="' . get_option( 'alg_wc_product_open_pricing_input_style', 'width:75px;text-align:center;' ) . '" '
 				. 'name="alg_open_price" '
 				. 'id="'.$input_id.'" '
 				. 'value="' . $value . '" '
+				. 'pattern="' . str_replace( '%backslash%', '\\', get_option( 'alg_wc_product_open_pricing_input_pattern', '' ) ) . '" '
 				. $custom_attributes . '>';
 
 			// Currency symbol
@@ -529,7 +530,6 @@ class Alg_WC_Product_Open_Pricing_Core {
 			$max_template = '<span class="popfwc-max">'.$max.'</span>';
 
 			// Template
-
 			$template_single = get_option( 'alg_wc_product_open_pricing_frontend_template', '<label for="%input_id%">' . __( 'Name Your Price', 'product-open-pricing-for-woocommerce' ) . '</label> %open_price_input% %currency_symbol%' );
 			$template        = $template_single;
 			if ( $is_loop ) {
