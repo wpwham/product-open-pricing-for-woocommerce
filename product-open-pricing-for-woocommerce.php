@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Product Open Pricing (Name Your Price) for WooCommerce
-Plugin URI: https://wpcodefactory.com/item/product-open-pricing-woocommerce/
+Plugin URI: https://wpfactory.com/item/product-open-pricing-woocommerce/
 Description: Open price (i.e. Name your price) products for WooCommerce.
-Version: 1.2.4
+Version: 1.2.5
 Author: Algoritmika Ltd
 Author URI: http://www.algoritmika.com
 Text Domain: product-open-pricing-for-woocommerce
@@ -43,7 +43,7 @@ if ( ! class_exists( 'Alg_WC_Product_Open_Pricing' ) ) :
  * Main Alg_WC_Product_Open_Pricing Class
  *
  * @class   Alg_WC_Product_Open_Pricing
- * @version 1.1.2
+ * @version 1.2.5
  * @since   1.0.0
  */
 final class Alg_WC_Product_Open_Pricing {
@@ -54,7 +54,7 @@ final class Alg_WC_Product_Open_Pricing {
 	 * @var   string
 	 * @since 1.0.0
 	 */
-	public $version = '1.2.4';
+	public $version = '1.2.5';
 
 	/**
 	 * @var   Alg_WC_Product_Open_Pricing The single instance of the class
@@ -104,7 +104,7 @@ final class Alg_WC_Product_Open_Pricing {
 	/**
 	 * Show action links on the plugin screen
 	 *
-	 * @version 1.1.0
+	 * @version 1.2.5
 	 * @since   1.0.0
 	 * @param   mixed $links
 	 * @return  array
@@ -113,7 +113,7 @@ final class Alg_WC_Product_Open_Pricing {
 		$custom_links = array();
 		$custom_links[] = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_product_open_pricing' ) . '">' . __( 'Settings', 'woocommerce' ) . '</a>';
 		if ( 'product-open-pricing-for-woocommerce.php' === basename( __FILE__ ) ) {
-			$custom_links[] = '<a href="https://wpcodefactory.com/item/product-open-pricing-woocommerce/">' . __( 'Unlock All', 'product-open-pricing-for-woocommerce' ) . '</a>';
+			$custom_links[] = '<a href="https://wpfactory.com/item/product-open-pricing-woocommerce/">' . __( 'Unlock All', 'product-open-pricing-for-woocommerce' ) . '</a>';
 		}
 		return array_merge( $custom_links, $links );
 	}

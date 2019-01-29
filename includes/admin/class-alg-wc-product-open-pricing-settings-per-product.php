@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Per Product Section Settings
  *
- * @version 1.1.0
+ * @version 1.2.5
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -76,7 +76,7 @@ class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
 	/**
 	 * admin_notices.
 	 *
-	 * @version 1.1.0
+	 * @version 1.2.5
 	 * @since   1.0.0
 	 */
 	function admin_notices() {
@@ -85,7 +85,7 @@ class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
 		}
 		?><div class="error"><p><?php
 			echo '<div class="message">'
-				. sprintf( __( 'Free plugin\'s version is limited to only one open pricing product enabled at a time. You will need to get <a href="%s" target="_blank">Product Open Pricing for WooCommerce Pro</a> to add unlimited number of open pricing products.', 'product-open-pricing-for-woocommerce' ), 'https://wpcodefactory.com/item/product-open-pricing-woocommerce/' )
+				. sprintf( __( 'Free plugin\'s version is limited to only one open pricing product enabled at a time. You will need to get <a href="%s" target="_blank">Product Open Pricing for WooCommerce Pro</a> to add unlimited number of open pricing products.', 'product-open-pricing-for-woocommerce' ), 'https://wpfactory.com/item/product-open-pricing-woocommerce/' )
 				. '</div>';
 		?></p></div><?php
 	}
