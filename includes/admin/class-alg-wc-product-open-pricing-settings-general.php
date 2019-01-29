@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - General Section Settings
  *
- * @version 1.2.4
+ * @version 1.2.5
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -28,7 +28,7 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 	/**
 	 * get_section_settings.
 	 *
-	 * @version 1.2.4
+	 * @version 1.2.5
 	 * @since   1.0.0
 	 */
 	function get_section_settings() {
@@ -67,7 +67,7 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 			array(
 				'title'    => __( 'Enable step ticker', 'product-open-pricing-for-woocommerce' ),
 				'desc'     => __( 'Enable', 'product-open-pricing-for-woocommerce' ),
-				'desc_tip' => __( 'Enables up/down ticker buttons from the text field.', 'product-open-pricing-for-woocommerce' ),
+				'desc_tip' => __( 'Enables up/down ticker buttons for the input field.', 'product-open-pricing-for-woocommerce' ),
 				'id'       => 'alg_wc_product_open_pricing_enable_step',
 				'default'  => 'yes',
 				'type'     => 'checkbox',
@@ -88,7 +88,8 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 			),
 			array(
 				'title'    => __( 'Hide price', 'product-open-pricing-for-woocommerce' ),
-				'desc'     => __( 'Hides original price on single product page', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Hide', 'product-open-pricing-for-woocommerce' ),
+				'desc_tip' => __( 'Hides original price on single product page.', 'product-open-pricing-for-woocommerce' ),
 				'id'       => 'alg_wc_product_open_pricing_hide_price',
 				'default'  => 'yes',
 				'type'     => 'checkbox',
@@ -101,7 +102,7 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 			// Messages
 			array(
 				'title'    => __( 'Messages', 'product-open-pricing-for-woocommerce' ),
-				'desc'     => __( 'Confirmation/Error messages, displayed after customer try to purchase', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Confirmation/Error messages, displayed after customer try to purchase.', 'product-open-pricing-for-woocommerce' ),
 				'type'     => 'title',
 				'id'       => 'alg_wc_product_open_pricing_messages',
 			),
@@ -134,13 +135,14 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 			// Loop
 			array(
 				'title'    => __( 'Loop', 'product-open-pricing-for-woocommerce' ),
-				'desc'     => __( 'Options regarding WooCommerce loop, like shop or category pages', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Options regarding WooCommerce loop, like shop or category pages.', 'product-open-pricing-for-woocommerce' ),
 				'type'     => 'title',
 				'id'       => 'alg_wc_product_open_pricing_loop',
 			),
 			array(
 				'title'    => __( 'Display on loop', 'product-open-pricing-for-woocommerce' ),
-				'desc'     => __( 'Displays the open pricing input field on loop', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Enable', 'product-open-pricing-for-woocommerce' ),
+				'desc_tip' => __( 'Displays the open pricing input field on loop.', 'product-open-pricing-for-woocommerce' ),
 				'id'       => 'alg_wc_product_open_pricing_field_on_loop',
 				'default'  => 'no',
 				'type'     => 'checkbox',
@@ -156,7 +158,8 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 			),
 			array(
 				'title'    => __( 'Hide price', 'product-open-pricing-for-woocommerce' ),
-				'desc'     => __( 'Hides original price on loop', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Hide', 'product-open-pricing-for-woocommerce' ),
+				'desc_tip' => __( 'Hides original price on loop.', 'product-open-pricing-for-woocommerce' ),
 				'id'       => 'alg_wc_product_open_pricing_loop_hide_price',
 				'default'  => 'yes',
 				'type'     => 'checkbox',
