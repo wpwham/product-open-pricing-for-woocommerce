@@ -15,22 +15,31 @@ Open price (i.e. Name your price) products for WooCommerce.
 
 For each product you can optionally set:
 
-* Default (i.e. Suggested) price
-* Minimum price
-* Maximum price
+* **Default** (i.e. Suggested) price
+* **Minimum** price
+* **Maximum** price
 
-You can also customize price step, frontend label, template and user messages.
+In general settings you can also:
+
+* Customize **frontend template**
+* Enable/disable open price input **shop and category pages**
+* Set **input style** and pattern
+* Enable/disable **step ticker**
+* Set **price step** on frontend
+* Enable/disable **quantity selector**
+* Optionally **show the original price** (for reference)
+* Customize **user messages**
 
 It's important to note the free version allows enabling open pricing for only one product at a time.
 
-== Premium ==
+= Premium =
 
-The premium version will allow setting open pricing on multiple products without restrictions.
+The [premium version](https://wpfactory.com/item/product-open-pricing-woocommerce/ "Upgrade to Product Open Pricing for WooCommerce Pro") will allow setting open pricing on multiple (i.e. unlimited number) products without restrictions.
 
-[Upgrade to Pro](https://wpfactory.com/item/product-open-pricing-woocommerce/ "Upgrade to Product Open Pricing for WooCommerce Pro")
-
-= Feedback =
-* We are open to your suggestions and feedback. Thank you for using or trying out one of our plugins!
+= More =
+* We are open to your suggestions and feedback.
+* Visit the [Product Open Pricing (Name Your Price) for WooCommerce plugin page](https://wpfactory.com/item/product-open-pricing-woocommerce).
+* Thank you for using or trying out one of our plugins!
 
 == Installation ==
 
