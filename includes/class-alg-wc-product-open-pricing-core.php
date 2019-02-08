@@ -18,7 +18,6 @@ class Alg_WC_Product_Open_Pricing_Core {
 	 *
 	 * @version 1.3.0
 	 * @since   1.0.0
-	 * @todo    [dev] add "Open Pricing" admin column
 	 * @todo    [dev] (maybe) add AJAX/instant updating (https://wordpress.org/support/topic/please-add-ajax-updating-of-typed-in-value-so-that-stripe-instant-payments-works/)
 	 * @todo    [feature] open pricing **per variation**
 	 */
@@ -62,6 +61,36 @@ class Alg_WC_Product_Open_Pricing_Core {
 			if ( 'yes' === get_option( 'alg_wc_product_open_pricing_fix_mini_cart', 'no' ) ) {
 				add_action( 'wp_loaded',                          array( $this, 'fix_mini_cart' ), PHP_INT_MAX );
 			}
+
+			// Admin "Open Pricing" column
+			if ( 'yes' === get_option( 'alg_wc_product_open_pricing_add_admin_column', 'no' ) ) {
+				add_filter( 'manage_edit-product_columns',        array( $this, 'add_product_open_pricing_admin_column' ),    PHP_INT_MAX );
+				add_action( 'manage_product_posts_custom_column', array( $this, 'render_product_open_pricing_admin_column' ), PHP_INT_MAX );
+			}
+		}
+	}
+
+	/**
+	 * add_product_open_pricing_admin_column.
+	 *
+	 * @version 1.3.0
+	 * @since   1.3.0
+	 * @todo    [dev] (maybe) add "Open Pricing Data" column (i.e. default, min and max prices)
+	 */
+	function add_product_open_pricing_admin_column( $columns ) {
+		$columns['alg_wc_pop_is_open_pricing'] = __( 'Open Pricing', 'product-open-pricing-for-woocommerce' );
+		return $columns;
+	}
+
+	/**
+	 * render_product_open_pricing_admin_column.
+	 *
+	 * @version 1.3.0
+	 * @since   1.3.0
+	 */
+	function render_product_open_pricing_admin_column( $column ) {
+		if ( 'alg_wc_pop_is_open_pricing' == $column && $this->is_open_price_product( wc_get_product( get_the_ID() ) ) ) {
+			echo '<span style="font-weight:bold;color:green;">&check;</span>';
 		}
 	}
 

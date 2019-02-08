@@ -53,11 +53,11 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'id'       => 'alg_wc_product_open_pricing_options',
 			),
 
-			// General
+			// Single Product Page
 			array(
-				'title'    => __( 'General', 'product-open-pricing-for-woocommerce' ),
+				'title'    => __( 'Single Product Page Options', 'product-open-pricing-for-woocommerce' ),
 				'type'     => 'title',
-				'id'       => 'alg_wc_product_open_pricing_messages_options',
+				'id'       => 'alg_wc_product_open_pricing_single_product_page_options',
 			),
 			array(
 				'title'    => __( 'Frontend template', 'product-open-pricing-for-woocommerce' ),
@@ -68,6 +68,71 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'type'     => 'textarea',
 				'css'      => 'width:100%;',
 				'alg_wc_pop_raw' => true,
+			),
+			array(
+				'title'    => __( 'Hide price', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Hide', 'product-open-pricing-for-woocommerce' ),
+				'desc_tip' => __( 'Hides original price on single product page.', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_hide_price',
+				'default'  => 'yes',
+				'type'     => 'checkbox',
+			),
+			array(
+				'title'    => __( 'Disable quantity selector', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Disable', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_disable_qty',
+				'default'  => 'yes',
+				'type'     => 'checkbox',
+			),
+			array(
+				'type'     => 'sectionend',
+				'id'       => 'alg_wc_product_open_pricing_single_product_page_options',
+			),
+
+			// Loop
+			array(
+				'title'    => __( 'Shop/Category Page Options', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Options regarding WooCommerce loop, like shop or category pages.', 'product-open-pricing-for-woocommerce' ),
+				'type'     => 'title',
+				'id'       => 'alg_wc_product_open_pricing_loop_options',
+			),
+			array(
+				'title'    => __( 'Display on loop', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Enable', 'product-open-pricing-for-woocommerce' ),
+				'desc_tip' => __( 'Displays the open pricing input field on loop.', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_field_on_loop',
+				'default'  => 'no',
+				'type'     => 'checkbox',
+			),
+			array(
+				'title'    => __( 'Frontend loop template', 'product-open-pricing-for-woocommerce' ),
+				'desc_tip' => __( 'Overwrites the "Frontend template" option if input field displayed on loop.', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => sprintf( __( 'Replaced placeholders: %s.' ),
+					'<code>' . implode( '</code>, <code>', array( '%input_id%', '%open_price_input%', '%currency_symbol%', '%minimum_price%', '%max_price%' ) ) . '</code>' ),
+				'id'       => 'alg_wc_product_open_pricing_frontend_loop_template',
+				'default'  => '<label for="%input_id%">' . __( 'Name Your Price', 'product-open-pricing-for-woocommerce' ) . '</label> %open_price_input% %currency_symbol%',
+				'type'     => 'textarea',
+				'css'      => 'width:100%;',
+				'alg_wc_pop_raw' => true,
+			),
+			array(
+				'title'    => __( 'Hide price', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Hide', 'product-open-pricing-for-woocommerce' ),
+				'desc_tip' => __( 'Hides original price on loop.', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_loop_hide_price',
+				'default'  => 'yes',
+				'type'     => 'checkbox',
+			),
+			array(
+				'type'     => 'sectionend',
+				'id'       => 'alg_wc_product_open_pricing_loop_options',
+			),
+
+			// Frontend
+			array(
+				'title'    => __( 'Frontend Options', 'product-open-pricing-for-woocommerce' ),
+				'type'     => 'title',
+				'id'       => 'alg_wc_product_open_pricing_general_options',
 			),
 			array(
 				'title'    => __( 'Input style', 'product-open-pricing-for-woocommerce' ),
@@ -102,31 +167,16 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'custom_attributes' => array( 'step' => '0.000000001', 'min' => '0.000000001' ),
 			),
 			array(
-				'title'    => __( 'Disable quantity selector', 'product-open-pricing-for-woocommerce' ),
-				'desc'     => __( 'Disable', 'product-open-pricing-for-woocommerce' ),
-				'id'       => 'alg_wc_product_open_pricing_disable_qty',
-				'default'  => 'yes',
-				'type'     => 'checkbox',
-			),
-			array(
-				'title'    => __( 'Hide price', 'product-open-pricing-for-woocommerce' ),
-				'desc'     => __( 'Hide', 'product-open-pricing-for-woocommerce' ),
-				'desc_tip' => __( 'Hides original price on single product page.', 'product-open-pricing-for-woocommerce' ),
-				'id'       => 'alg_wc_product_open_pricing_hide_price',
-				'default'  => 'yes',
-				'type'     => 'checkbox',
-			),
-			array(
 				'type'     => 'sectionend',
-				'id'       => 'alg_wc_product_open_pricing_messages_options',
+				'id'       => 'alg_wc_product_open_pricing_general_options',
 			),
 
 			// Messages
 			array(
-				'title'    => __( 'Messages', 'product-open-pricing-for-woocommerce' ),
+				'title'    => __( 'Message Options', 'product-open-pricing-for-woocommerce' ),
 				'desc'     => __( 'Confirmation/Error messages, displayed after customer try to purchase.', 'product-open-pricing-for-woocommerce' ),
 				'type'     => 'title',
-				'id'       => 'alg_wc_product_open_pricing_messages',
+				'id'       => 'alg_wc_product_open_pricing_message_options',
 			),
 			array(
 				'title'    => __( 'Message on empty price', 'product-open-pricing-for-woocommerce' ),
@@ -154,51 +204,32 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 			),
 			array(
 				'type'     => 'sectionend',
-				'id'       => 'alg_wc_product_open_pricing_messages',
+				'id'       => 'alg_wc_product_open_pricing_message_options',
 			),
 
-			// Loop
+			// Admin
 			array(
-				'title'    => __( 'Loop', 'product-open-pricing-for-woocommerce' ),
-				'desc'     => __( 'Options regarding WooCommerce loop, like shop or category pages.', 'product-open-pricing-for-woocommerce' ),
+				'title'    => __( 'Admin Options', 'product-open-pricing-for-woocommerce' ),
 				'type'     => 'title',
-				'id'       => 'alg_wc_product_open_pricing_loop',
+				'id'       => 'alg_wc_product_open_pricing_admin_options',
 			),
 			array(
-				'title'    => __( 'Display on loop', 'product-open-pricing-for-woocommerce' ),
-				'desc'     => __( 'Enable', 'product-open-pricing-for-woocommerce' ),
-				'desc_tip' => __( 'Displays the open pricing input field on loop.', 'product-open-pricing-for-woocommerce' ),
-				'id'       => 'alg_wc_product_open_pricing_field_on_loop',
+				'title'    => __( 'Add "Open Pricing" column', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Add', 'product-open-pricing-for-woocommerce' ),
+				'desc_tip' => sprintf( __( 'Adds "Open Pricing" column to the admin <a href="%s">products list</a>.', 'product-open-pricing-for-woocommerce' ),
+					admin_url( 'edit.php?post_type=product' ) ),
+				'id'       => 'alg_wc_product_open_pricing_add_admin_column',
 				'default'  => 'no',
 				'type'     => 'checkbox',
 			),
 			array(
-				'title'    => __( 'Frontend loop template', 'product-open-pricing-for-woocommerce' ),
-				'desc_tip' => __( 'Overwrites the "Frontend template" option if input field displayed on loop.', 'product-open-pricing-for-woocommerce' ),
-				'desc'     => sprintf( __( 'Replaced placeholders: %s.' ),
-					'<code>' . implode( '</code>, <code>', array( '%input_id%', '%open_price_input%', '%currency_symbol%', '%minimum_price%', '%max_price%' ) ) . '</code>' ),
-				'id'       => 'alg_wc_product_open_pricing_frontend_loop_template',
-				'default'  => '<label for="%input_id%">' . __( 'Name Your Price', 'product-open-pricing-for-woocommerce' ) . '</label> %open_price_input% %currency_symbol%',
-				'type'     => 'textarea',
-				'css'      => 'width:100%;',
-				'alg_wc_pop_raw' => true,
-			),
-			array(
-				'title'    => __( 'Hide price', 'product-open-pricing-for-woocommerce' ),
-				'desc'     => __( 'Hide', 'product-open-pricing-for-woocommerce' ),
-				'desc_tip' => __( 'Hides original price on loop.', 'product-open-pricing-for-woocommerce' ),
-				'id'       => 'alg_wc_product_open_pricing_loop_hide_price',
-				'default'  => 'yes',
-				'type'     => 'checkbox',
-			),
-			array(
 				'type'     => 'sectionend',
-				'id'       => 'alg_wc_product_open_pricing_loop',
+				'id'       => 'alg_wc_product_open_pricing_admin_options',
 			),
 
 			// Advanced
 			array(
-				'title'    => __( 'Advanced', 'product-open-pricing-for-woocommerce' ),
+				'title'    => __( 'Advanced Options', 'product-open-pricing-for-woocommerce' ),
 				'type'     => 'title',
 				'id'       => 'alg_wc_product_open_pricing_advanced_options',
 			),

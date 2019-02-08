@@ -24,9 +24,9 @@ In general settings you can also:
 * Customize **frontend template**
 * Enable/disable open price input **shop and category pages**
 * Set **input style** and pattern
-* Enable/disable **step ticker**
-* Set **price step** on frontend
 * Enable/disable **quantity selector**
+* Set **price step** on frontend
+* Enable/disable **step ticker**
 * Optionally **show the original price** (for reference)
 * Customize **user messages**
 
@@ -51,6 +51,7 @@ The [premium version](https://wpfactory.com/item/product-open-pricing-woocommerc
 
 = 1.3.0 - 08/02/2019 =
 * Dev - Advanced - "Fix mini cart" option added.
+* Dev - Admin - "Add Open Pricing column" option added.
 * Dev - Messages - Default values for "Message on price too low" and "Message on price too high" chnaged.
 * Dev - "Raw" input is now allowed in all suitable settings.
 * Dev - Major code refactoring and clean up.
