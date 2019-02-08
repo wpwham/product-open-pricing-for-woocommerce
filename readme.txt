@@ -39,6 +39,10 @@ The premium version will allow setting open pricing on multiple products without
 
 == Changelog ==
 
+= 1.3.0 - 08/02/2019 =
+* Dev - Advanced Options - "Fix mini cart" option added.
+~* Dev - Major code refactoring.
+
 = 1.2.5 - 29/01/2019 =
 * Dev - "Input style" option added.
 * Dev - "Input pattern" option added.

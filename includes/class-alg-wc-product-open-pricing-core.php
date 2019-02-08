@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.2.5
+ * @version 1.3.0
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -16,7 +16,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.2.0
+	 * @version 1.3.0
 	 * @since   1.0.0
 	 */
 	function __construct() {
@@ -45,14 +45,51 @@ class Alg_WC_Product_Open_Pricing_Core {
 			// Frontend filter on Single Product Page
 			$placeholder_filter = sanitize_text_field( apply_filters( 'aopwc_frontend_input_filter', 'woocommerce_before_add_to_cart_button' ) );
 			if ( ! empty( $placeholder_filter ) ) {
-				add_action( $placeholder_filter, array( $this, 'add_open_price_input_field_to_frontend' ), PHP_INT_MAX );
+				add_action( $placeholder_filter,                  array( $this, 'add_open_price_input_field_to_frontend' ), PHP_INT_MAX );
 			}
 
 			// Frontend filter on Loop
 			$placeholder_filter_loop = 'yes' === get_option( 'alg_wc_product_open_pricing_field_on_loop', 'no' ) ? sanitize_text_field( apply_filters( 'aopwc_frontend_input_filter_loop', 'woocommerce_before_add_to_cart_button' ) ) : '';
 			if ( ! empty( $placeholder_filter_loop ) ) {
-				add_action( 'woocommerce_after_shop_loop_item', array( $this, 'add_open_price_input_field_to_frontend' ), 9 );
+				add_action( 'woocommerce_after_shop_loop_item',   array( $this, 'add_open_price_input_field_to_frontend' ), 9 );
 			}
+
+			// Fix mini cart item price
+			if ( 'yes' === get_option( 'alg_wc_product_open_pricing_fix_mini_cart', 'no' ) ) {
+				add_action( 'wp_loaded',                          array( $this, 'fix_mini_cart' ), PHP_INT_MAX );
+			}
+		}
+	}
+
+	/*
+	 * is_frontend()
+	 *
+	 * @version 1.3.0
+	 * @since   1.3.0
+	 * @return  boolean
+	 */
+	function is_frontend() {
+		if ( ! is_admin() ) {
+			return true;
+		} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			return ( ! isset( $_REQUEST['action'] ) || ! is_string( $_REQUEST['action'] ) || ! in_array( $_REQUEST['action'], array(
+					'woocommerce_load_variations',
+				) ) );
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * fix_mini_cart.
+	 *
+	 * @version 1.3.0
+	 * @since   1.3.0
+	 * @todo    [dev] this is only temporary solution!
+	 */
+	function fix_mini_cart() {
+		if ( $this->is_frontend() && function_exists( 'WC' ) && null !== WC() && isset( WC()->cart ) && is_object( WC()->cart ) && method_exists( WC()->cart, 'calculate_totals' ) ) {
+			WC()->cart->calculate_totals();
 		}
 	}
 
@@ -62,7 +99,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	 * @version 1.1.9
 	 * @since   1.1.9
 	 */
-	public function sync_add_to_cart_button_attribute(){
+	public function sync_add_to_cart_button_attribute() {
 		if (
 			'yes' !== get_option( 'alg_wc_product_open_pricing_field_on_loop', 'no' ) ||
 			is_product() ||

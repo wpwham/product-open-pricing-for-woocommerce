@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - General Section Settings
  *
- * @version 1.2.5
+ * @version 1.3.0
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -28,7 +28,7 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 	/**
 	 * get_section_settings.
 	 *
-	 * @version 1.2.5
+	 * @version 1.3.0
 	 * @since   1.0.0
 	 */
 	function get_section_settings() {
@@ -184,6 +184,26 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'type'     => 'sectionend',
 				'id'       => 'alg_wc_product_open_pricing_loop',
 			),
+
+			// Advanced
+			array(
+				'title'    => __( 'Advanced Options', 'product-open-pricing-for-woocommerce' ),
+				'type'     => 'title',
+				'id'       => 'alg_wc_product_open_pricing_advanced_options',
+			),
+			array(
+				'title'    => __( 'Fix mini cart', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Enable', 'product-open-pricing-for-woocommerce' ),
+				'desc_tip' => __( 'Fixes open pricing item price in mini cart.', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_fix_mini_cart',
+				'default'  => 'no',
+				'type'     => 'checkbox',
+			),
+			array(
+				'type'     => 'sectionend',
+				'id'       => 'alg_wc_product_open_pricing_advanced_options',
+			),
+
 		);
 		return $settings;
 	}
