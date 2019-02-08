@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Per Product Section Settings
  *
- * @version 1.2.5
+ * @version 1.3.0
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -32,32 +32,27 @@ class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
 	/**
 	 * save_meta_box_value.
 	 *
-	 * @version 1.1.0
+	 * @version 1.3.0
 	 * @since   1.0.0
 	 */
 	function save_meta_box_value( $option_value, $option_name ) {
-		if ( true === apply_filters( 'alg_wc_product_open_pricing', false, 'per_product_settings' ) ) {
+		if ( 'no' === $option_value || apply_filters( 'alg_wc_product_open_pricing', false, 'per_product_settings' ) || 'alg_wc_product_open_pricing_enabled' != $option_name ) {
 			return $option_value;
 		}
-		if ( 'no' === $option_value ) {
-			return $option_value;
-		}
-		if ( 'alg_wc_product_open_pricing_enabled' === $option_name ) {
-			$args = array(
-				'post_type'      => 'product',
-				'post_status'    => 'any',
-				'posts_per_page' => 1,
-				'meta_key'       => '_' . $option_name,
-				'meta_value'     => 'yes',
-				'post__not_in'   => array( get_the_ID() ),
-				'fields'         => 'ids',
-			);
-			$loop = new WP_Query( $args );
-			$c = $loop->found_posts + 1;
-			if ( $c >= 2 ) {
-				add_filter( 'redirect_post_location', array( $this, 'add_notice_query_var' ), 99 );
-				return 'no';
-			}
+		$args = array(
+			'post_type'      => 'product',
+			'post_status'    => 'any',
+			'posts_per_page' => 1,
+			'meta_key'       => '_' . $option_name,
+			'meta_value'     => 'yes',
+			'post__not_in'   => array( get_the_ID() ),
+			'fields'         => 'ids',
+		);
+		$loop = new WP_Query( $args );
+		$c = $loop->found_posts + 1;
+		if ( $c >= 2 ) {
+			add_filter( 'redirect_post_location', array( $this, 'add_notice_query_var' ), 99 );
+			return 'no';
 		}
 		return $option_value;
 	}
@@ -76,18 +71,16 @@ class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
 	/**
 	 * admin_notices.
 	 *
-	 * @version 1.2.5
+	 * @version 1.3.0
 	 * @since   1.0.0
 	 */
 	function admin_notices() {
 		if ( ! isset( $_GET['alg_wc_product_open_pricing_admin_notice'] ) ) {
 			return;
 		}
-		?><div class="error"><p><?php
-			echo '<div class="message">'
-				. sprintf( __( 'Free plugin\'s version is limited to only one open pricing product enabled at a time. You will need to get <a href="%s" target="_blank">Product Open Pricing for WooCommerce Pro</a> to add unlimited number of open pricing products.', 'product-open-pricing-for-woocommerce' ), 'https://wpfactory.com/item/product-open-pricing-woocommerce/' )
-				. '</div>';
-		?></p></div><?php
+		echo '<div class="error"><p><div class="message">' .
+			sprintf( 'Free plugin\'s version is limited to only one open pricing product enabled at a time. You will need to get <a href="%s" target="_blank">Product Open Pricing for WooCommerce Pro</a> to add unlimited number of open pricing products.', 'https://wpfactory.com/item/product-open-pricing-woocommerce/' ) .
+		'</div></p></div>';
 	}
 
 	/**

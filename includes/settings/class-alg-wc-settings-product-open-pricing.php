@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Settings
  *
- * @version 1.2.5
+ * @version 1.3.0
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -39,33 +39,59 @@ class Alg_WC_Settings_Product_Open_Pricing extends WC_Settings_Page {
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.0.0
+	 * @version 1.3.0
 	 * @since   1.0.0
 	 */
 	function get_settings() {
 		global $current_section;
-		return apply_filters( 'woocommerce_get_settings_' . $this->id . '_' . $current_section, array() );
+		return array_merge( apply_filters( 'woocommerce_get_settings_' . $this->id . '_' . $current_section, array() ), array(
+			array(
+				'title'     => __( 'Reset Settings', 'product-open-pricing-for-woocommerce' ),
+				'type'      => 'title',
+				'id'        => $this->id . '_' . $current_section . '_reset_options',
+			),
+			array(
+				'title'     => __( 'Reset section settings', 'product-open-pricing-for-woocommerce' ),
+				'desc'      => '<strong>' . __( 'Reset', 'product-open-pricing-for-woocommerce' ) . '</strong>',
+				'id'        => $this->id . '_' . $current_section . '_reset',
+				'default'   => 'no',
+				'type'      => 'checkbox',
+			),
+			array(
+				'type'      => 'sectionend',
+				'id'        => $this->id . '_' . $current_section . '_reset_options',
+			),
+		) );
 	}
 
 	/**
 	 * maybe_reset_settings.
 	 *
-	 * @version 1.1.0
+	 * @version 1.3.0
 	 * @since   1.0.0
-	 * @todo    [dev] add "Settings have been reset" admin notice
-	 * @todo    [dev] remove `add_option`
 	 */
 	function maybe_reset_settings() {
 		global $current_section;
 		if ( 'yes' === get_option( $this->id . '_' . $current_section . '_reset', 'no' ) ) {
 			foreach ( $this->get_settings() as $value ) {
-				if ( isset( $value['default'] ) && isset( $value['id'] ) ) {
-					delete_option( $value['id'] );
-					$autoload = isset( $value['autoload'] ) ? ( bool ) $value['autoload'] : true;
-					add_option( $value['id'], $value['default'], '', ( $autoload ? 'yes' : 'no' ) );
+				if ( isset( $value['id'] ) ) {
+					$id = explode( '[', $value['id'] );
+					delete_option( $id[0] );
 				}
 			}
+			add_action( 'admin_notices', array( $this, 'admin_notice_settings_reset' ) );
 		}
+	}
+
+	/**
+	 * admin_notice_settings_reset.
+	 *
+	 * @version 1.3.0
+	 * @since   1.3.0
+	 */
+	function admin_notice_settings_reset() {
+		echo '<div class="notice notice-warning is-dismissible"><p><strong>' .
+			__( 'Your settings have been reset.', 'product-open-pricing-for-woocommerce' ) . '</strong></p></div>';
 	}
 
 	/**

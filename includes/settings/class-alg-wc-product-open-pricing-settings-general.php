@@ -26,14 +26,15 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 	}
 
 	/**
-	 * get_section_settings.
+	 * get_settings.
 	 *
 	 * @version 1.3.0
 	 * @since   1.0.0
 	 */
-	function get_section_settings() {
+	function get_settings() {
 		$default_price_step = 1 / pow( 10, absint( get_option( 'woocommerce_price_num_decimals', 2 ) ) );
 		$settings = array(
+
 			array(
 				'title'    => __( 'Product Open Pricing Options', 'product-open-pricing-for-woocommerce' ),
 				'type'     => 'title',
@@ -51,30 +52,35 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'type'     => 'sectionend',
 				'id'       => 'alg_wc_product_open_pricing_options',
 			),
+
+			// General
 			array(
-				'title'    => __( 'General Options', 'product-open-pricing-for-woocommerce' ),
+				'title'    => __( 'General', 'product-open-pricing-for-woocommerce' ),
 				'type'     => 'title',
 				'id'       => 'alg_wc_product_open_pricing_messages_options',
 			),
 			array(
 				'title'    => __( 'Frontend template', 'product-open-pricing-for-woocommerce' ),
-				'desc_tip' => __( 'Here you can use' ) . ': ' . '%input_id%, %open_price_input%, %currency_symbol%, %minimum_price%, %max_price%',
+				'desc'     => sprintf( __( 'Replaced placeholders: %s.' ),
+					'<code>' . implode( '</code>, <code>', array( '%input_id%', '%open_price_input%', '%currency_symbol%', '%minimum_price%', '%max_price%' ) ) . '</code>' ),
 				'id'       => 'alg_wc_product_open_pricing_frontend_template',
 				'default'  => '<label for="%input_id%">'.__( 'Name Your Price', 'product-open-pricing-for-woocommerce' ).'</label> %open_price_input% %currency_symbol%',
 				'type'     => 'textarea',
 				'css'      => 'width:100%;',
+				'alg_wc_pop_raw' => true,
 			),
 			array(
 				'title'    => __( 'Input style', 'product-open-pricing-for-woocommerce' ),
 				'id'       => 'alg_wc_product_open_pricing_input_style',
 				'default'  => 'width:75px;text-align:center;',
 				'type'     => 'text',
+				'css'      => 'width:100%;',
 				'alg_wc_pop_raw' => true,
 			),
 			array(
 				'title'    => __( 'Input pattern', 'product-open-pricing-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'For backslash use %s, e.g.: %s', 'product-open-pricing-for-woocommerce' ),
-					'<strong><em>%backslash%</em></strong>', '<strong><em>%backslash%d*</em></strong>' ),
+				'desc'     => sprintf( __( 'For backslash use %s, e.g.: %s.', 'product-open-pricing-for-woocommerce' ),
+					'<code>%backslash%</code>', '<code>%backslash%d*</code>' ),
 				'id'       => 'alg_wc_product_open_pricing_input_pattern',
 				'default'  => '',
 				'type'     => 'text',
@@ -128,20 +134,23 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'default'  => __( 'Price is required!', 'product-open-pricing-for-woocommerce' ),
 				'type'     => 'text',
 				'css'      => 'width:100%;',
+				'alg_wc_pop_raw' => true,
 			),
 			array(
-				'title'    => __( 'Message on price too small', 'product-open-pricing-for-woocommerce' ),
+				'title'    => __( 'Message on price too low', 'product-open-pricing-for-woocommerce' ),
 				'id'       => 'alg_wc_product_open_pricing_messages_too_small',
-				'default'  => __( 'Entered price is too small!', 'product-open-pricing-for-woocommerce' ),
+				'default'  => __( 'Price is too low!', 'product-open-pricing-for-woocommerce' ),
 				'type'     => 'text',
 				'css'      => 'width:100%;',
+				'alg_wc_pop_raw' => true,
 			),
 			array(
-				'title'    => __( 'Message on price too big', 'product-open-pricing-for-woocommerce' ),
+				'title'    => __( 'Message on price too high', 'product-open-pricing-for-woocommerce' ),
 				'id'       => 'alg_wc_product_open_pricing_messages_too_big',
-				'default'  => __( 'Entered price is too big!', 'product-open-pricing-for-woocommerce' ),
+				'default'  => __( 'Price is too high!', 'product-open-pricing-for-woocommerce' ),
 				'type'     => 'text',
 				'css'      => 'width:100%;',
+				'alg_wc_pop_raw' => true,
 			),
 			array(
 				'type'     => 'sectionend',
@@ -165,12 +174,14 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 			),
 			array(
 				'title'    => __( 'Frontend loop template', 'product-open-pricing-for-woocommerce' ),
-				'desc'     => __( 'Overwrites the Frontend template option if input field displayed on loop', 'product-open-pricing-for-woocommerce' ),
-				'desc_tip' => __( 'Here you can use' ) . ': ' . '%input_id%, %open_price_input%, %currency_symbol%, %minimum_price%, %max_price%',
+				'desc_tip' => __( 'Overwrites the "Frontend template" option if input field displayed on loop.', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => sprintf( __( 'Replaced placeholders: %s.' ),
+					'<code>' . implode( '</code>, <code>', array( '%input_id%', '%open_price_input%', '%currency_symbol%', '%minimum_price%', '%max_price%' ) ) . '</code>' ),
 				'id'       => 'alg_wc_product_open_pricing_frontend_loop_template',
-				'default'  => '<label for="%input_id%">'.__( 'Name Your Price', 'product-open-pricing-for-woocommerce' ).'</label> %open_price_input% %currency_symbol%',
+				'default'  => '<label for="%input_id%">' . __( 'Name Your Price', 'product-open-pricing-for-woocommerce' ) . '</label> %open_price_input% %currency_symbol%',
 				'type'     => 'textarea',
 				'css'      => 'width:100%;',
+				'alg_wc_pop_raw' => true,
 			),
 			array(
 				'title'    => __( 'Hide price', 'product-open-pricing-for-woocommerce' ),
@@ -187,7 +198,7 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 
 			// Advanced
 			array(
-				'title'    => __( 'Advanced Options', 'product-open-pricing-for-woocommerce' ),
+				'title'    => __( 'Advanced', 'product-open-pricing-for-woocommerce' ),
 				'type'     => 'title',
 				'id'       => 'alg_wc_product_open_pricing_advanced_options',
 			),

@@ -3,7 +3,7 @@ Contributors: algoritmika, anbinder, karzin
 Tags: woocommerce, product open pricing, open pricing, name your price
 Requires at least: 4.4
 Tested up to: 5.0
-Stable tag: 1.2.5
+Stable tag: 1.3.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -13,7 +13,7 @@ Open price (i.e. Name your price) products for WooCommerce.
 
 **Product Open Pricing for WooCommerce** plugin lets you create open price (i.e. "name your price" or "pay your price") products in WooCommerce.
 
-For each product you can set:
+For each product you can optionally set:
 
 * Default (i.e. Suggested) price
 * Minimum price
@@ -24,6 +24,7 @@ You can also customize price step, frontend label, template and user messages.
 It's important to note the free version allows enabling open pricing for only one product at a time.
 
 == Premium ==
+
 The premium version will allow setting open pricing on multiple products without restrictions.
 
 [Upgrade to Pro](https://wpfactory.com/item/product-open-pricing-woocommerce/ "Upgrade to Product Open Pricing for WooCommerce Pro")
@@ -40,8 +41,11 @@ The premium version will allow setting open pricing on multiple products without
 == Changelog ==
 
 = 1.3.0 - 08/02/2019 =
-* Dev - Advanced Options - "Fix mini cart" option added.
-~* Dev - Major code refactoring.
+* Dev - Advanced - "Fix mini cart" option added.
+* Dev - Messages - Default values for "Message on price too low" and "Message on price too high" chnaged.
+* Dev - "Raw" input is now allowed in all suitable settings.
+* Dev - Major code refactoring and clean up.
+* Dev - Admin settings restyled.
 
 = 1.2.5 - 29/01/2019 =
 * Dev - "Input style" option added.
@@ -56,45 +60,45 @@ The premium version will allow setting open pricing on multiple products without
 * Add warning on description about free version restriction which allows open pricing for only one product at a time.
 
 = 1.2.2 - 09/10/2018 =
-* Fix compatibility with Currency Switcher on getting value from request
-* Add option to display original price on both loop and single product page
+* Fix compatibility with Currency Switcher on getting value from request.
+* Add option to display original price on both loop and single product page.
 
 = 1.2.1 - 18/08/2018 =
-* Fix input sanitizing
+* Fix input sanitizing.
 
 = 1.2.0 - 17/08/2018 =
-* Fix woocommerce_loop_add_to_cart_link filter with correct args quantity
+* Fix woocommerce_loop_add_to_cart_link filter with correct args quantity.
 
 = 1.1.9 - 16/08/2018 =
-* Add option to include open input field on loop
-* Add option to overwrite frontend template option if input field is displayed on loop
-* Improve open price input sanitizing
-* Add compatibility with ajax add to cart if loop option is enabled
-* Remove Frontend Label option
-* Fix min/max prices when using currency switcher
-* Rearrange message options on admin
+* Add option to include open input field on loop.
+* Add option to overwrite frontend template option if input field is displayed on loop.
+* Improve open price input sanitizing.
+* Add compatibility with ajax add to cart if loop option is enabled.
+* Remove Frontend Label option.
+* Fix min/max prices when using currency switcher.
+* Rearrange message options on admin.
 
 = 1.1.8 - 06/08/2018 =
-* Improve compatibility with Currency Switcher for WooCommerce plugin converting min and max value
+* Improve compatibility with Currency Switcher for WooCommerce plugin converting min and max value.
 
 = 1.1.7 - 06/08/2018 =
-* Change the way to override product prices, replacing 'get_cart_item_open_price_from_session()' by 'override_product_price()' and replacing 'woocommerce_get_cart_item_from_session' filter by 'woocommerce_before_calculate_totals'
-* Fix compatibility with Currency Switcher for WooCommerce plugin
+* Change the way to override product prices, replacing 'get_cart_item_open_price_from_session()' by 'override_product_price()' and replacing 'woocommerce_get_cart_item_from_session' filter by 'woocommerce_before_calculate_totals'.
+* Fix compatibility with Currency Switcher for WooCommerce plugin.
 
 = 1.1.6 - 26/07/2018 =
-* Add compatibility with Currency Switcher for WooCommerce plugin
-* Add 'aopwc_frontend_input_filter' filter to setup where the frontend field is going to be displayed. Default is 'woocommerce_before_add_to_cart_button'
+* Add compatibility with Currency Switcher for WooCommerce plugin.
+* Add 'aopwc_frontend_input_filter' filter to setup where the frontend field is going to be displayed. Default is 'woocommerce_before_add_to_cart_button'.
 
 = 1.1.5 - 21/06/2018 =
-* Add option to remove up/down ticker buttons from the input field
+* Add option to remove up/down ticker buttons from the input field.
 
 = 1.1.4 - 18/06/2018 =
-* Add %minimum_price% and %max_price% to frontend template
-* Add span to %currency_symbol% template
-* Update WC tested up to
+* Add %minimum_price% and %max_price% to frontend template.
+* Add span to %currency_symbol% template.
+* Update "WC tested up to".
 
 = 1.1.3 - 07/05/2018 =
-* Add min and max attributes for price input
+* Add min and max attributes for price input.
 
 = 1.1.2 - 10/04/2018 =
 * Dev - "Price step" step decreased to `0.000000001`.
