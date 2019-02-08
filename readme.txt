@@ -22,7 +22,7 @@ For each product you can optionally set:
 In general settings you can also:
 
 * Customize **frontend template**
-* Enable/disable open price input **shop and category pages**
+* Enable/disable open price input on **shop and category pages**
 * Set **input style** and pattern
 * Enable/disable **quantity selector**
 * Set **price step** on frontend
@@ -30,7 +30,7 @@ In general settings you can also:
 * Optionally **show the original price** (for reference)
 * Customize **user messages**
 
-It's important to note the free version allows enabling open pricing for only one product at a time.
+It's important to note that the free version allows enabling open pricing for only one product at a time.
 
 = Premium =
 
