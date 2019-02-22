@@ -6,34 +6,34 @@ msgstr ""
 msgid "Unlock All"
 msgstr ""
 
-#: includes/class-alg-wc-product-open-pricing-core.php:81
+#: includes/class-alg-wc-product-open-pricing-core.php:118
 msgid "Open Pricing"
 msgstr ""
 
-#: includes/class-alg-wc-product-open-pricing-core.php:403
+#: includes/class-alg-wc-product-open-pricing-core.php:440
 msgid "Read more"
 msgstr ""
 
-#: includes/class-alg-wc-product-open-pricing-core.php:482
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:184
+#: includes/class-alg-wc-product-open-pricing-core.php:519
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:236
 msgid "Price is required!"
 msgstr ""
 
-#: includes/class-alg-wc-product-open-pricing-core.php:487
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:192
+#: includes/class-alg-wc-product-open-pricing-core.php:524
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:244
 msgid "Price is too low!"
 msgstr ""
 
-#: includes/class-alg-wc-product-open-pricing-core.php:494
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:200
+#: includes/class-alg-wc-product-open-pricing-core.php:531
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:252
 msgid "Price is too high!"
 msgstr ""
 
-#: includes/class-alg-wc-product-open-pricing-core.php:602
-#: includes/class-alg-wc-product-open-pricing-core.php:606
-#: includes/class-alg-wc-product-open-pricing-core.php:611
+#: includes/class-alg-wc-product-open-pricing-core.php:639
+#: includes/class-alg-wc-product-open-pricing-core.php:643
+#: includes/class-alg-wc-product-open-pricing-core.php:648
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:67
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:113
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:133
 msgid "Name Your Price"
 msgstr ""
 
@@ -67,144 +67,195 @@ msgid "Frontend template"
 msgstr ""
 
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:64
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:110
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:130
 #, php-format
 msgid "Replaced placeholders: %s."
 msgstr ""
 
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:73
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:119
-msgid "Hide price"
+msgid "Input field position"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:74
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:120
-msgid "Hide"
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:79
+msgid "Before add to cart button"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:75
-msgid "Hides original price on single product page."
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:80
+msgid "Before add to cart quantity"
 msgstr ""
 
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:81
-msgid "Disable quantity selector"
+msgid "After add to cart quantity"
 msgstr ""
 
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:82
-msgid "Disable"
+msgid "After add to cart button"
+msgstr ""
+
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:86
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:150
+msgid "Position priority."
+msgstr ""
+
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:87
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:151
+msgid "Change this if you want to move the field inside the Position."
+msgstr ""
+
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:93
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:157
+msgid "Hide price"
 msgstr ""
 
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:94
-msgid "Shop/Category Page Options"
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:158
+msgid "Hide"
 msgstr ""
 
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:95
-msgid "Options regarding WooCommerce loop, like shop or category pages."
-msgstr ""
-
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:100
-msgid "Display on loop"
+msgid "Hides original price on single product page."
 msgstr ""
 
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:101
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:156
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:238
-msgid "Enable"
+msgid "Disable quantity selector"
 msgstr ""
 
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:102
+msgid "Disable"
+msgstr ""
+
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:114
+msgid "Shop/Category Page Options"
+msgstr ""
+
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:115
+msgid "Options regarding WooCommerce loop, like shop or category pages."
+msgstr ""
+
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:120
+msgid "Display on loop"
+msgstr ""
+
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:121
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:194
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:209
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:290
+msgid "Enable"
+msgstr ""
+
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:122
 msgid "Displays the open pricing input field on loop."
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:108
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:128
 msgid "Frontend loop template"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:109
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:129
 msgid ""
 "Overwrites the \"Frontend template\" option if input field displayed on loop."
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:121
-msgid "Hides original price on loop."
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:139
+msgid "Input field loop position"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:133
-msgid "Frontend Options"
-msgstr ""
-
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:138
-msgid "Input style"
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:145
+msgid "Before item"
 msgstr ""
 
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:146
+msgid "After item"
+msgstr ""
+
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:159
+msgid "Hides original price on loop."
+msgstr ""
+
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:171
+msgid "Frontend Options"
+msgstr ""
+
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:176
+msgid "Input style"
+msgstr ""
+
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:184
 msgid "Input pattern"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:147
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:185
 #, php-format
 msgid "For backslash use %s, e.g.: %s."
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:155
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:193
 msgid "Enable step ticker"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:157
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:195
 msgid "Enables up/down ticker buttons for the input field."
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:163
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:201
 msgid "Price step"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:176
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:208
+msgid "Force number of decimals"
+msgstr ""
+
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:215
+msgid "Number of decimals."
+msgstr ""
+
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:228
 msgid "Message Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:177
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:229
 msgid "Confirmation/Error messages, displayed after customer try to purchase."
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:182
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:234
 msgid "Message on empty price"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:190
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:242
 msgid "Message on price too low"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:198
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:250
 msgid "Message on price too high"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:212
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:264
 msgid "Admin Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:217
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:269
 msgid "Add \"Open Pricing\" column"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:218
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:270
 msgid "Add"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:219
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:271
 #, php-format
 msgid ""
 "Adds \"Open Pricing\" column to the admin <a href=\"%s\">products list</a>."
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:232
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:284
 msgid "Advanced Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:237
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:289
 msgid "Fix mini cart"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:239
+#: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:291
 msgid "Fixes open pricing item price in mini cart."
 msgstr ""
 
