@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.3.0
+ * @version 1.3.1
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -16,28 +16,38 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.3.0
+	 * @version 1.3.1
 	 * @since   1.0.0
-	 * @todo    [dev] (maybe) add AJAX/instant updating (https://wordpress.org/support/topic/please-add-ajax-updating-of-typed-in-value-so-that-stripe-instant-payments-works/)
-	 * @todo    [feature] open pricing **per variation**
+	 * @todo    [dev] (maybe) add AJAX/instant updating (#11777)
+	 * @todo    [feature] open pricing **per variation** (#11726)
 	 */
 	function __construct() {
 		if ( 'yes' === get_option( 'alg_wc_product_open_pricing_enabled', 'yes' ) ) {
 			$this->is_wc_version_below_3 = version_compare( get_option( 'woocommerce_version', null ), '3.0.0', '<' );
+
+			// Price
 			$get_price_filter = ( $this->is_wc_version_below_3 ? 'woocommerce_get_price' : 'woocommerce_product_get_price' );
 			add_filter( $get_price_filter,                        array( $this, 'get_open_price' ), PHP_INT_MAX, 2 );
 			add_filter( 'woocommerce_get_price_html',             array( $this, 'hide_original_price' ), PHP_INT_MAX, 2 );
 			add_filter( 'woocommerce_get_variation_price_html',   array( $this, 'hide_original_price' ), PHP_INT_MAX, 2 );
+
+			// Qty
 			if ( 'yes' === get_option( 'alg_wc_product_open_pricing_disable_qty', 'yes' ) ) {
 				add_filter( 'woocommerce_is_sold_individually',   array( $this, 'hide_quantity_input_field' ), PHP_INT_MAX, 2 );
 			}
+
+			// Is purchasable
 			add_filter( 'woocommerce_is_purchasable',             array( $this, 'is_purchasable' ), PHP_INT_MAX, 2 );
+
+			// Add to cart
 			add_filter( 'woocommerce_product_supports',           array( $this, 'disable_add_to_cart_ajax' ), PHP_INT_MAX, 3 );
 			add_filter( 'woocommerce_product_add_to_cart_url',    array( $this, 'add_to_cart_url' ), PHP_INT_MAX, 2 );
 			add_filter( 'woocommerce_product_add_to_cart_text',   array( $this, 'add_to_cart_text' ), PHP_INT_MAX, 2 );
 			add_filter( 'woocommerce_add_to_cart_validation',     array( $this, 'validate_open_price_on_add_to_cart' ), PHP_INT_MAX, 2 );
 			add_filter( 'woocommerce_add_cart_item_data',         array( $this, 'add_open_price_to_cart_item_data' ), PHP_INT_MAX, 3 );
 			add_filter( 'woocommerce_add_cart_item',              array( $this, 'add_open_price_to_cart_item' ), PHP_INT_MAX, 2 );
+
+			// Other hooks
 			add_action( 'woocommerce_before_calculate_totals',    array( $this, 'override_product_price' ), 10, 1 );
 			add_action( 'woocommerce_before_calculate_totals',    array( $this, 'convert_before_calculate_totals_currency_switcher' ), 11, 1 );
 			add_action( 'aopwc_value',                            array( $this, 'convert_price_currency_switcher' ), 10, 2 );
@@ -45,16 +55,23 @@ class Alg_WC_Product_Open_Pricing_Core {
 			add_action( 'wp_footer',                              array( $this, 'sync_add_to_cart_button_attribute' ) );
 
 			// Frontend filter on Single Product Page
-			$placeholder_filter = sanitize_text_field( apply_filters( 'aopwc_frontend_input_filter', 'woocommerce_before_add_to_cart_button' ) );
+			$placeholder_filter = get_option( 'alg_wc_product_open_pricing_field_position', 'woocommerce_before_add_to_cart_button' );
+			$placeholder_filter = sanitize_text_field( apply_filters( 'aopwc_frontend_input_filter', $placeholder_filter ) );
 			if ( ! empty( $placeholder_filter ) ) {
-				add_action( $placeholder_filter,                  array( $this, 'add_open_price_input_field_to_frontend' ), PHP_INT_MAX );
+				$placeholder_filter_priority = get_option( 'alg_wc_product_open_pricing_field_position_priority', 9999 );
+				$placeholder_filter_priority = intval( apply_filters( 'aopwc_frontend_input_filter_priority', $placeholder_filter_priority ) );
+				add_action( $placeholder_filter,                  array( $this, 'add_open_price_input_field_to_frontend' ), $placeholder_filter_priority );
 			}
 
 			// Frontend filter on Loop
-			$placeholder_filter_loop = 'yes' === get_option( 'alg_wc_product_open_pricing_field_on_loop', 'no' ) ?
-				sanitize_text_field( apply_filters( 'aopwc_frontend_input_filter_loop', 'woocommerce_before_add_to_cart_button' ) ) : '';
-			if ( ! empty( $placeholder_filter_loop ) ) {
-				add_action( 'woocommerce_after_shop_loop_item',   array( $this, 'add_open_price_input_field_to_frontend' ), 9 );
+			if ( 'yes' === get_option( 'alg_wc_product_open_pricing_field_on_loop', 'no' ) ) {
+				$placeholder_filter_loop = get_option( 'alg_wc_product_open_pricing_field_loop_position', 'woocommerce_after_shop_loop_item' );
+				$placeholder_filter_loop = sanitize_text_field( apply_filters( 'aopwc_frontend_input_filter_loop', $placeholder_filter_loop ) );
+				if ( ! empty( $placeholder_filter_loop ) ) {
+					$placeholder_filter_loop_priority = get_option( 'alg_wc_product_open_pricing_field_loop_position_priority', 9 );
+					$placeholder_filter_loop_priority = intval( apply_filters( 'aopwc_frontend_input_filter_loop_priority', $placeholder_filter_loop_priority ) );
+					add_action( $placeholder_filter_loop,         array( $this, 'add_open_price_input_field_to_frontend' ), $placeholder_filter_loop_priority );
+				}
 			}
 
 			// Fix mini cart item price
@@ -67,7 +84,27 @@ class Alg_WC_Product_Open_Pricing_Core {
 				add_filter( 'manage_edit-product_columns',        array( $this, 'add_product_open_pricing_admin_column' ),    PHP_INT_MAX );
 				add_action( 'manage_product_posts_custom_column', array( $this, 'render_product_open_pricing_admin_column' ), PHP_INT_MAX );
 			}
+
+			// Frontend script
+			if ( 'yes' === get_option( 'alg_wc_product_open_pricing_force_decimal_width_enabled', 'no' ) ) {
+				add_action( 'wp_enqueue_scripts',                 array( $this, 'enqueue_scripts_frontend' ), PHP_INT_MAX );
+			}
 		}
+	}
+
+	/**
+	 * enqueue_scripts_frontend.
+	 *
+	 * @version 1.3.1
+	 * @since   1.3.1
+	 */
+	function enqueue_scripts_frontend() {
+		wp_enqueue_script( 'alg-wc-pop-frontend',
+			alg_wc_product_open_pricing()->plugin_url() . '/includes/js/alg-wc-pop-frontend.js', array( 'jquery' ), alg_wc_product_open_pricing()->version, true );
+		wp_localize_script( 'alg-wc-pop-frontend',
+			'alg_wc_pop_data_object',
+			array( 'force_decimal_width' => get_option( 'alg_wc_product_open_pricing_force_decimal_width', get_option( 'woocommerce_price_num_decimals', 2 ) ) ) );
+
 	}
 
 	/**
@@ -118,7 +155,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	 *
 	 * @version 1.3.0
 	 * @since   1.3.0
-	 * @todo    [dev] this is only temporary solution!
+	 * @todo    [dev] this is only temporary solution! (#11860)
 	 */
 	function fix_mini_cart() {
 		if ( $this->is_frontend() && function_exists( 'WC' ) && null !== WC() && isset( WC()->cart ) && is_object( WC()->cart ) && method_exists( WC()->cart, 'calculate_totals' ) ) {

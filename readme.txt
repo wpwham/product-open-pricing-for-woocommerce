@@ -3,7 +3,7 @@ Contributors: algoritmika, anbinder, karzin
 Tags: woocommerce, product open pricing, open pricing, name your price
 Requires at least: 4.4
 Tested up to: 5.0
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -49,11 +49,16 @@ The [premium version](https://wpfactory.com/item/product-open-pricing-woocommerc
 
 == Changelog ==
 
+= 1.3.1 - 22/02/2019 =
+* Dev - Single Product Page Options - "Input field position" options added.
+* Dev - Shop/Category Page Options - "Input field loop position" options added.
+* Dev - Frontend Options - "Force number of decimals" option added.
+
 = 1.3.0 - 08/02/2019 =
 * Dev - Advanced - "Fix mini cart" option added.
 * Dev - Admin - "Add Open Pricing column" option added.
-* Dev - Messages - Default values for "Message on price too low" and "Message on price too high" chnaged.
-* Dev - "Raw" input is now allowed in all suitable settings.
+* Dev - Messages - Default values for "Message on price too low" and "Message on price too high" changed.
+* Dev - "Raw" input is now allowed in all corresponding settings.
 * Dev - Major code refactoring and clean up.
 * Dev - Admin settings restyled.
 

@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - General Section Settings
  *
- * @version 1.3.0
+ * @version 1.3.1
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */
@@ -28,7 +28,7 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.3.0
+	 * @version 1.3.1
 	 * @since   1.0.0
 	 */
 	function get_settings() {
@@ -68,6 +68,26 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'type'     => 'textarea',
 				'css'      => 'width:100%;',
 				'alg_wc_pop_raw' => true,
+			),
+			array(
+				'title'    => __( 'Input field position', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_field_position',
+				'default'  => 'woocommerce_before_add_to_cart_button',
+				'type'     => 'select',
+				'class'    => 'wc-enhanced-select',
+				'options'  => array(
+					'woocommerce_before_add_to_cart_button'     => __( 'Before add to cart button', 'product-open-pricing-for-woocommerce' ),
+					'woocommerce_before_add_to_cart_quantity'   => __( 'Before add to cart quantity', 'product-open-pricing-for-woocommerce' ),
+					'woocommerce_after_add_to_cart_quantity'    => __( 'After add to cart quantity', 'product-open-pricing-for-woocommerce' ),
+					'woocommerce_after_add_to_cart_button'      => __( 'After add to cart button', 'product-open-pricing-for-woocommerce' ),
+				),
+			),
+			array(
+				'desc'     => __( 'Position priority.', 'product-open-pricing-for-woocommerce' ),
+				'desc_tip' => __( 'Change this if you want to move the field inside the Position.', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_field_position_priority',
+				'default'  => 9999,
+				'type'     => 'number',
 			),
 			array(
 				'title'    => __( 'Hide price', 'product-open-pricing-for-woocommerce' ),
@@ -114,6 +134,24 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'type'     => 'textarea',
 				'css'      => 'width:100%;',
 				'alg_wc_pop_raw' => true,
+			),
+			array(
+				'title'    => __( 'Input field loop position', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_field_loop_position',
+				'default'  => 'woocommerce_after_shop_loop_item',
+				'type'     => 'select',
+				'class'    => 'wc-enhanced-select',
+				'options'  => array(
+					'woocommerce_before_shop_loop_item'   => __( 'Before item', 'product-open-pricing-for-woocommerce' ),
+					'woocommerce_after_shop_loop_item'    => __( 'After item', 'product-open-pricing-for-woocommerce' ),
+				),
+			),
+			array(
+				'desc'     => __( 'Position priority.', 'product-open-pricing-for-woocommerce' ),
+				'desc_tip' => __( 'Change this if you want to move the field inside the Position.', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_field_loop_position_priority',
+				'default'  => 9,
+				'type'     => 'number',
 			),
 			array(
 				'title'    => __( 'Hide price', 'product-open-pricing-for-woocommerce' ),
@@ -165,6 +203,20 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'default'  => $default_price_step,
 				'type'     => 'number',
 				'custom_attributes' => array( 'step' => '0.000000001', 'min' => '0.000000001' ),
+			),
+			array(
+				'title'    => __( 'Force number of decimals', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Enable', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_force_decimal_width_enabled',
+				'default'  => 'no',
+				'type'     => 'checkbox',
+			),
+			array(
+				'desc'     => __( 'Number of decimals.', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'alg_wc_product_open_pricing_force_decimal_width',
+				'default'  => get_option( 'woocommerce_price_num_decimals', 2 ),
+				'type'     => 'number',
+				'custom_attributes' => array( 'min' => '0' ),
 			),
 			array(
 				'type'     => 'sectionend',
