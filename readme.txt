@@ -1,9 +1,9 @@
 === Product Open Pricing (Name Your Price) for WooCommerce ===
-Contributors: algoritmika, anbinder, karzin
+Contributors: wpwham
 Tags: woocommerce, product open pricing, open pricing, name your price
 Requires at least: 4.4
 Tested up to: 5.1
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,9 @@ The [premium version](https://wpfactory.com/item/product-open-pricing-woocommerc
 3. Start by visiting plugin settings at "WooCommerce > Settings > Product Open Pricing".
 
 == Changelog ==
+
+= 1.3.2 - 19/03/2019 =
+* Dev - Plugin author data updated.
 
 = 1.3.1 - 22/02/2019 =
 * Dev - Single Product Page Options - "Input field position" options added.

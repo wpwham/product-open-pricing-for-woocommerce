@@ -73,6 +73,7 @@ class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
 	 *
 	 * @version 1.3.0
 	 * @since   1.0.0
+	 * @todo    [dev] (maybe) three?
 	 */
 	function admin_notices() {
 		if ( ! isset( $_GET['alg_wc_product_open_pricing_admin_notice'] ) ) {
