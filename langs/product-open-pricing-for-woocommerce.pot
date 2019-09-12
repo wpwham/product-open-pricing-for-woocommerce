@@ -1,10 +1,24 @@
-#: product-open-pricing-for-woocommerce.php:145
-msgid "Settings"
+#, fuzzy
+msgid ""
 msgstr ""
-
-#: product-open-pricing-for-woocommerce.php:147
-msgid "Unlock All"
-msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Product Open Pricing (Name Your Price) for WooCommerce\n"
+"POT-Creation-Date: 2019-09-11 20:19-0700\n"
+"PO-Revision-Date: 2019-09-11 20:19-0700\n"
+"Last-Translator: \n"
+"Language-Team: WP Wham <support@wpwham.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: product-open-pricing-for-woocommerce.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: includes/class-alg-wc-product-open-pricing-core.php:118
 msgid "Open Pricing"
@@ -29,9 +43,9 @@ msgstr ""
 msgid "Price is too high!"
 msgstr ""
 
-#: includes/class-alg-wc-product-open-pricing-core.php:639
-#: includes/class-alg-wc-product-open-pricing-core.php:643
-#: includes/class-alg-wc-product-open-pricing-core.php:648
+#: includes/class-alg-wc-product-open-pricing-core.php:638
+#: includes/class-alg-wc-product-open-pricing-core.php:642
+#: includes/class-alg-wc-product-open-pricing-core.php:647
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:67
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:133
 msgid "Name Your Price"
@@ -259,35 +273,35 @@ msgstr ""
 msgid "Fixes open pricing item price in mini cart."
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php:99
+#: includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php:100
 msgid "Yes"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php:100
+#: includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php:101
 msgid "No"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php:102
+#: includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php:103
 msgid "Enabled"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php:108
+#: includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php:109
 msgid "Default price"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php:109
+#: includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php:110
 msgid "Default (i.e. Suggested) price"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php:115
+#: includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php:116
 msgid "Min price"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php:121
+#: includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php:122
 msgid "Max price"
 msgstr ""
 
-#: includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php:162
+#: includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php:163
 #: includes/settings/class-alg-wc-settings-product-open-pricing.php:24
 msgid "Product Open Pricing"
 msgstr ""
@@ -306,4 +320,34 @@ msgstr ""
 
 #: includes/settings/class-alg-wc-settings-product-open-pricing.php:94
 msgid "Your settings have been reset."
+msgstr ""
+
+#: product-open-pricing-for-woocommerce.php:145
+msgid "Settings"
+msgstr ""
+
+#: product-open-pricing-for-woocommerce.php:147
+msgid "Unlock All"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Product Open Pricing (Name Your Price) for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid ""
+"https://wpwham.com/products/product-open-pricing-name-your-price-for-"
+"woocommerce/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Open price (i.e. Name your price) products for WooCommerce."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "WP Wham"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://wpwham.com/"
 msgstr ""
