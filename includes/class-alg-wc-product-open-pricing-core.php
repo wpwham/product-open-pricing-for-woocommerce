@@ -614,8 +614,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 			$custom_attributes = '';
 			$default_price_step = 1 / pow( 10, absint( get_option( 'woocommerce_price_num_decimals', 2 ) ) );
 			$custom_attributes .= 'step="' . get_option( 'alg_wc_product_open_pricing_price_step', $default_price_step ) . '" ';
-			$custom_attributes .= 'min="' . esc_attr( $min ) . '" ';
-			$custom_attributes .= 'max="' . esc_attr( $max ) . '" ';
+			$custom_attributes = apply_filters( 'wpw_product_open_pricing_input_custom_attributes', $custom_attributes, $product_id );
 
 			// The field - Final assembly
 			$input_field = '<input '
