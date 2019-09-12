@@ -3,7 +3,7 @@ Contributors: wpwham
 Tags: woocommerce, product open pricing, open pricing, name your price
 Requires at least: 4.4
 Tested up to: 5.2
-Stable tag: 1.3.2
+Stable tag: 1.4.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -49,15 +49,19 @@ The [premium version](https://wpwham.com/products/product-open-pricing-name-your
 
 == Changelog ==
 
-= 1.3.2 - 19/03/2019 =
+= 1.4.0 - 2019-09-11 =
+* FIX: removed "min" and "max" attributes from price input field. (This was causing browser-based validation messages to appear before our own validation messages. If for some reason you want to reverse this change, use the filter 'wpw_product_open_pricing_input_custom_attributes'.)
+* UPDATE: updated .pot file for translations
+
+= 1.3.2 - 2019-03-19 =
 * Dev - Plugin author data updated.
 
-= 1.3.1 - 22/02/2019 =
+= 1.3.1 - 2019-02-22 =
 * Dev - Single Product Page Options - "Input field position" options added.
 * Dev - Shop/Category Page Options - "Input field loop position" options added.
 * Dev - Frontend Options - "Force number of decimals" option added.
 
-= 1.3.0 - 08/02/2019 =
+= 1.3.0 - 2019-02-08 =
 * Dev - Advanced - "Fix mini cart" option added.
 * Dev - Admin - "Add Open Pricing column" option added.
 * Dev - Messages - Default values for "Message on price too low" and "Message on price too high" changed.
@@ -65,29 +69,29 @@ The [premium version](https://wpwham.com/products/product-open-pricing-name-your
 * Dev - Major code refactoring and clean up.
 * Dev - Admin settings restyled.
 
-= 1.2.5 - 29/01/2019 =
+= 1.2.5 - 2019-01-29 =
 * Dev - "Input style" option added.
 * Dev - "Input pattern" option added.
 * Dev - Admin settings restyled and descriptions updated.
 * Dev - Plugin URI updated.
 
-= 1.2.4 - 17/01/2019 =
+= 1.2.4 - 2019-01-17 =
 * Fix - "Enable step ticker" option fixed.
 
-= 1.2.3 - 21/10/2018 =
+= 1.2.3 - 2018-10-21 =
 * Add warning on description about free version restriction which allows open pricing for only one product at a time.
 
-= 1.2.2 - 09/10/2018 =
+= 1.2.2 - 2018-10-09 =
 * Fix compatibility with Currency Switcher on getting value from request.
 * Add option to display original price on both loop and single product page.
 
-= 1.2.1 - 18/08/2018 =
+= 1.2.1 - 2018-08-18 =
 * Fix input sanitizing.
 
-= 1.2.0 - 17/08/2018 =
+= 1.2.0 - 2018-08-17 =
 * Fix woocommerce_loop_add_to_cart_link filter with correct args quantity.
 
-= 1.1.9 - 16/08/2018 =
+= 1.1.9 - 2018-08-16 =
 * Add option to include open input field on loop.
 * Add option to overwrite frontend template option if input field is displayed on loop.
 * Improve open price input sanitizing.
@@ -96,39 +100,39 @@ The [premium version](https://wpwham.com/products/product-open-pricing-name-your
 * Fix min/max prices when using currency switcher.
 * Rearrange message options on admin.
 
-= 1.1.8 - 06/08/2018 =
+= 1.1.8 - 2018-08-06 =
 * Improve compatibility with Currency Switcher for WooCommerce plugin converting min and max value.
 
-= 1.1.7 - 06/08/2018 =
+= 1.1.7 - 2018-08-06 =
 * Change the way to override product prices, replacing 'get_cart_item_open_price_from_session()' by 'override_product_price()' and replacing 'woocommerce_get_cart_item_from_session' filter by 'woocommerce_before_calculate_totals'.
 * Fix compatibility with Currency Switcher for WooCommerce plugin.
 
-= 1.1.6 - 26/07/2018 =
+= 1.1.6 - 2018-07-26 =
 * Add compatibility with Currency Switcher for WooCommerce plugin.
 * Add 'aopwc_frontend_input_filter' filter to setup where the frontend field is going to be displayed. Default is 'woocommerce_before_add_to_cart_button'.
 
-= 1.1.5 - 21/06/2018 =
+= 1.1.5 - 2018-06-21 =
 * Add option to remove up/down ticker buttons from the input field.
 
-= 1.1.4 - 18/06/2018 =
+= 1.1.4 - 2018-06-18 =
 * Add %minimum_price% and %max_price% to frontend template.
 * Add span to %currency_symbol% template.
 * Update "WC tested up to".
 
-= 1.1.3 - 07/05/2018 =
+= 1.1.3 - 2018-05-07 =
 * Add min and max attributes for price input.
 
-= 1.1.2 - 10/04/2018 =
+= 1.1.2 - 2018-04-10 =
 * Dev - "Price step" step decreased to `0.000000001`.
 * Dev - Admin settings descriptions updated.
 * Dev - Plugin settings array stored as main class property.
 
-= 1.1.1 - 02/01/2018 =
+= 1.1.1 - 2018-01-02 =
 * Dev - "Disable Quantity Selector" option added.
 * Dev - Admin settings restyled.
 * Dev - "WC tested up to" added to plugin header.
 
-= 1.1.0 - 25/07/2017 =
+= 1.1.0 - 2017-07-25 =
 * Dev - WooCommerce v3 compatibility - Getting product ID and status with functions (instead of accessing properties directly).
 * Dev - WooCommerce v3 compatibility - `woocommerce_get_price` replaced with `woocommerce_product_get_price`.
 * Dev - Autoloading plugin options.
@@ -137,10 +141,5 @@ The [premium version](https://wpwham.com/products/product-open-pricing-name-your
 * Dev - POT file added.
 * Dev - Code cleanup.
 
-= 1.0.0 - 01/02/2017 =
+= 1.0.0 - 2017-02-01 =
 * Initial Release.
-
-== Upgrade Notice ==
-
-= 1.0.0 =
-This is the first release of the plugin.
