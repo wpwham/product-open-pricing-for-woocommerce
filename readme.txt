@@ -2,7 +2,7 @@
 Contributors: wpwham
 Tags: woocommerce, product open pricing, open pricing, name your price
 Requires at least: 4.4
-Tested up to: 5.1
+Tested up to: 5.2
 Stable tag: 1.3.2
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -34,11 +34,11 @@ It's important to note that the free version allows enabling open pricing for on
 
 = Premium =
 
-The [premium version](https://wpfactory.com/item/product-open-pricing-woocommerce/ "Upgrade to Product Open Pricing for WooCommerce Pro") will allow setting open pricing on multiple (i.e. unlimited number) products without restrictions.
+The [premium version](https://wpwham.com/products/product-open-pricing-name-your-price-for-woocommerce/ "Upgrade to Product Open Pricing for WooCommerce Pro") will allow setting open pricing on multiple (i.e. unlimited number) products without restrictions.
 
 = More =
 * We are open to your suggestions and feedback.
-* Visit the [Product Open Pricing (Name Your Price) for WooCommerce plugin page](https://wpfactory.com/item/product-open-pricing-woocommerce).
+* Visit the [Product Open Pricing (Name Your Price) for WooCommerce plugin page](https://wpwham.com/products/product-open-pricing-name-your-price-for-woocommerce/).
 * Thank you for using or trying out one of our plugins!
 
 == Installation ==

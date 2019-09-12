@@ -1,15 +1,15 @@
 <?php
 /*
 Plugin Name: Product Open Pricing (Name Your Price) for WooCommerce
-Plugin URI: https://wpfactory.com/item/product-open-pricing-woocommerce/
+Plugin URI: https://wpwham.com/products/product-open-pricing-name-your-price-for-woocommerce/
 Description: Open price (i.e. Name your price) products for WooCommerce.
 Version: 1.3.2
 Author: WP Wham
-Author URI: https://wpfactory.com/author/wpwham/
+Author URI: https://wpwham.com/
 Text Domain: product-open-pricing-for-woocommerce
 Domain Path: /langs
 Copyright: © 2019 WP Wham
-WC tested up to: 3.5
+WC tested up to: 3.7
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -144,7 +144,7 @@ final class Alg_WC_Product_Open_Pricing {
 		$custom_links = array();
 		$custom_links[] = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_product_open_pricing' ) . '">' . __( 'Settings', 'woocommerce' ) . '</a>';
 		if ( 'product-open-pricing-for-woocommerce.php' === basename( __FILE__ ) ) {
-			$custom_links[] = '<a href="https://wpfactory.com/item/product-open-pricing-woocommerce/">' . __( 'Unlock All', 'product-open-pricing-for-woocommerce' ) . '</a>';
+			$custom_links[] = '<a href="https://wpwham.com/products/product-open-pricing-name-your-price-for-woocommerce/">' . __( 'Unlock All', 'product-open-pricing-for-woocommerce' ) . '</a>';
 		}
 		return array_merge( $custom_links, $links );
 	}
