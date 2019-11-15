@@ -2,8 +2,8 @@
 Contributors: wpwham
 Tags: woocommerce, product open pricing, open pricing, name your price
 Requires at least: 4.4
-Tested up to: 5.2
-Stable tag: 1.4.0
+Tested up to: 5.3
+Stable tag: 1.4.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,9 @@ The [premium version](https://wpwham.com/products/product-open-pricing-name-your
 3. Start by visiting plugin settings at "WooCommerce > Settings > Product Open Pricing".
 
 == Changelog ==
+
+= 1.4.1 - 2019-11-15 =
+* UPDATE: bump tested versions
 
 = 1.4.0 - 2019-09-11 =
 * FIX: removed "min" and "max" attributes from price input field. (This was causing browser-based validation messages to appear before our own validation messages. If for some reason you want to reverse this change, use the filter 'wpw_product_open_pricing_input_custom_attributes'.)
