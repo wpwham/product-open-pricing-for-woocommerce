@@ -513,7 +513,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 			$min_price = apply_filters( 'aopwc_value', $min_price, 'min' );
 			$max_price = apply_filters( 'aopwc_value', $max_price, 'max' );
 
-			if ( $min_price > 0 ) {
+			if ( $min_price >= 0 ) {
 				if ( ! isset( $_REQUEST['alg_open_price'] ) || '' === $_REQUEST['alg_open_price'] ) {
 					wc_add_notice( get_option( 'alg_wc_product_open_pricing_messages_required',
 						__( 'Price is required!', 'product-open-pricing-for-woocommerce' ) ), 'error' );
