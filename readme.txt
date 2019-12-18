@@ -3,7 +3,7 @@ Contributors: wpwham
 Tags: woocommerce, product open pricing, open pricing, name your price
 Requires at least: 4.4
 Tested up to: 5.3
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,9 @@ The [premium version](https://wpwham.com/products/product-open-pricing-name-your
 3. Start by visiting plugin settings at "WooCommerce > Settings > Product Open Pricing".
 
 == Changelog ==
+
+= 1.4.3 - 2019-12-18 =
+* FIX: issue where min_price=0 ignored.
 
 = 1.4.2 - 2019-11-15 =
 * FIX: if "force number of decimals" is checked in the settings, a user can't change the price field on a mobile device.
