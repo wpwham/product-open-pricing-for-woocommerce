@@ -2,9 +2,10 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.3.1
+ * @version 1.4.5
  * @since   1.0.0
  * @author  Algoritmika Ltd.
+ * @author  WP Wham
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -582,12 +583,17 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * add_open_price_input_field_to_frontend.
 	 *
-	 * @version 1.3.0
+	 * @version 1.4.5
 	 * @since   1.0.0
 	 * @todo    [feature] (maybe) step on **per product** basis
 	 */
 	function add_open_price_input_field_to_frontend() {
 		$_product = wc_get_product();
+		
+		if ( ! is_a( $_product, 'WC_Product' ) ) {
+			return;
+		}
+		
 		if ( $this->is_open_price_product( $_product ) ) {
 			$product_id = $this->get_product_or_variation_parent_id( $_product );
 
