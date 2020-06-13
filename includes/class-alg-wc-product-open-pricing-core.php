@@ -127,7 +127,13 @@ class Alg_WC_Product_Open_Pricing_Core {
 	 * @since   1.3.0
 	 */
 	function render_product_open_pricing_admin_column( $column ) {
-		if ( 'alg_wc_pop_is_open_pricing' == $column && $this->is_open_price_product( wc_get_product( get_the_ID() ) ) ) {
+		$_product = wc_get_product( get_the_ID() );
+		
+		if ( ! is_a( $_product, 'WC_Product' ) ) {
+			return;
+		}
+		
+		if ( 'alg_wc_pop_is_open_pricing' == $column && $this->is_open_price_product( $_product ) ) {
 			echo '<span style="font-weight:bold;color:green;">&check;</span>';
 		}
 	}
@@ -507,6 +513,11 @@ class Alg_WC_Product_Open_Pricing_Core {
 	 */
 	function validate_open_price_on_add_to_cart( $passed, $product_id ) {
 		$_product = wc_get_product( $product_id );
+		
+		if ( ! is_a( $_product, 'WC_Product' ) ) {
+			return $passed;
+		}
+		
 		if ( $this->is_open_price_product( $_product ) ) {
 			$min_price = get_post_meta( $product_id, '_' . 'alg_wc_product_open_pricing_min_price', true );
 			$max_price = get_post_meta( $product_id, '_' . 'alg_wc_product_open_pricing_max_price', true );
