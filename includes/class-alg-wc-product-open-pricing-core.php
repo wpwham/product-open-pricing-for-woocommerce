@@ -261,7 +261,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * Converts min and max price if using currency switcher.
 	 *
-	 * @version 1.1.8
+	 * @version 1.4.6
 	 * @since   1.1.8
 	 * @param   $value
 	 * @param   $value_type
@@ -271,7 +271,8 @@ class Alg_WC_Product_Open_Pricing_Core {
 		if (
 			is_admin() ||
 			! function_exists( 'alg_wc_currency_switcher_plugin' ) ||
-			( $value_type != 'min' && $value_type != 'max' && $value_type != 'value' )
+			( $value_type != 'min' && $value_type != 'max' && $value_type != 'value' ) ||
+			$value === ''
 		) {
 			return $value;
 		}
