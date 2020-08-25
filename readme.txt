@@ -49,7 +49,7 @@ The [premium version](https://wpwham.com/products/product-open-pricing-name-your
 
 == Changelog ==
 
-= 1.4.6 - 2020-06-12 =
+= 1.4.6 - 2020-08-25 =
 * FIX: PHP notice.
 * UPDATE: display our settings in WC status report.
 * UPDATE: updated .pot file for translations.
