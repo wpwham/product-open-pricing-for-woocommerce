@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Product Open Pricing (Name Your Price) for WooCommerce\n"
-"POT-Creation-Date: 2019-09-11 20:19-0700\n"
+"POT-Creation-Date: 2020-08-25 02:21-0700\n"
 "PO-Revision-Date: 2019-09-11 20:19-0700\n"
 "Last-Translator: \n"
 "Language-Team: WP Wham <support@wpwham.com>\n"
@@ -20,32 +20,32 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: includes/class-alg-wc-product-open-pricing-core.php:118
+#: includes/class-alg-wc-product-open-pricing-core.php:119
 msgid "Open Pricing"
 msgstr ""
 
-#: includes/class-alg-wc-product-open-pricing-core.php:440
+#: includes/class-alg-wc-product-open-pricing-core.php:448
 msgid "Read more"
 msgstr ""
 
-#: includes/class-alg-wc-product-open-pricing-core.php:519
+#: includes/class-alg-wc-product-open-pricing-core.php:532
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:236
 msgid "Price is required!"
 msgstr ""
 
-#: includes/class-alg-wc-product-open-pricing-core.php:524
+#: includes/class-alg-wc-product-open-pricing-core.php:537
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:244
 msgid "Price is too low!"
 msgstr ""
 
-#: includes/class-alg-wc-product-open-pricing-core.php:531
+#: includes/class-alg-wc-product-open-pricing-core.php:544
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:252
 msgid "Price is too high!"
 msgstr ""
 
-#: includes/class-alg-wc-product-open-pricing-core.php:638
-#: includes/class-alg-wc-product-open-pricing-core.php:642
-#: includes/class-alg-wc-product-open-pricing-core.php:647
+#: includes/class-alg-wc-product-open-pricing-core.php:656
+#: includes/class-alg-wc-product-open-pricing-core.php:660
+#: includes/class-alg-wc-product-open-pricing-core.php:665
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:67
 #: includes/settings/class-alg-wc-product-open-pricing-settings-general.php:133
 msgid "Name Your Price"
@@ -322,11 +322,15 @@ msgstr ""
 msgid "Your settings have been reset."
 msgstr ""
 
-#: product-open-pricing-for-woocommerce.php:145
+#: product-open-pricing-for-woocommerce.php:128
+msgid "Product Open Pricing Settings"
+msgstr ""
+
+#: product-open-pricing-for-woocommerce.php:194
 msgid "Settings"
 msgstr ""
 
-#: product-open-pricing-for-woocommerce.php:147
+#: product-open-pricing-for-woocommerce.php:196
 msgid "Unlock All"
 msgstr ""
 
