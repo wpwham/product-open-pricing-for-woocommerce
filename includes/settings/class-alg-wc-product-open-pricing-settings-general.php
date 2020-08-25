@@ -2,9 +2,10 @@
 /**
  * Product Open Pricing for WooCommerce - General Section Settings
  *
- * @version 1.3.1
+ * @version 1.4.6
  * @since   1.0.0
  * @author  Algoritmika Ltd.
+ * @author  WP Wham
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -28,7 +29,7 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.3.1
+	 * @version 1.4.6
 	 * @since   1.0.0
 	 */
 	public static function get_settings() {
