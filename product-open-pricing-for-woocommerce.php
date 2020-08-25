@@ -111,6 +111,54 @@ final class Alg_WC_Product_Open_Pricing {
 	}
 
 	/**
+	 * add settings to WC status report
+	 *
+	 * @version 1.4.6
+	 * @since   1.4.6
+	 * @author  WP Wham
+	 */
+	public static function add_settings_to_status_report() {
+		#region add_settings_to_status_report
+		$protected_settings = array( 'wpwham_product_open_pricing_license' );
+		$settings           = Alg_WC_Product_Open_Pricing_Settings_General::get_settings();
+		?>
+		<table class="wc_status_table widefat" cellspacing="0">
+			<thead>
+				<tr>
+					<th colspan="3" data-export-label="Currency Switcher Settings"><h2><?php esc_html_e( 'Product Open Pricing Settings', 'product-open-pricing-for-woocommerce' ); ?></h2></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ( $settings as $setting ): ?>
+				<?php 
+				if ( in_array( $setting['type'], array( 'title', 'sectionend' ) ) ) { 
+					continue;
+				}
+				if ( isset( $setting['title'] ) ) {
+					$title = $setting['title'];
+				} elseif ( isset( $setting['desc'] ) ) {
+					$title = $setting['desc'];
+				} else {
+					$title = $setting['id'];
+				}
+				$value = get_option( $setting['id'] ); 
+				if ( in_array( $setting['id'], $protected_settings ) ) {
+					$value = $value > '' ? '(set)' : 'not set';
+				}
+				?>
+				<tr>
+					<td data-export-label="<?php echo esc_attr( $title ); ?>"><?php esc_html_e( $title, 'product-open-pricing-for-woocommerce' ); ?>:</td>
+					<td class="help">&nbsp;</td>
+					<td><?php echo is_array( $value ) ? print_r( $value, true ) : $value; ?></td>
+				</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+		<?php
+		#endregion add_settings_to_status_report
+	}
+
+	/**
 	 * admin.
 	 *
 	 * @version 1.3.0
@@ -120,10 +168,11 @@ final class Alg_WC_Product_Open_Pricing {
 		// Action links
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
 		// Settings
-		add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_woocommerce_settings_tab' ) );
 		require_once( 'includes/settings/class-alg-wc-product-open-pricing-settings-section.php' );
 		$this->settings = array();
 		$this->settings['general'] = require_once( 'includes/settings/class-alg-wc-product-open-pricing-settings-general.php' );
+		add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_woocommerce_settings_tab' ) );
+		add_action( 'woocommerce_system_status_report', array( $this, 'add_settings_to_status_report' ) );
 		// Metaboxes (per Product Settings)
 		require_once( 'includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php' );
 		// Version updated

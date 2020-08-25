@@ -31,7 +31,7 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 	 * @version 1.3.1
 	 * @since   1.0.0
 	 */
-	function get_settings() {
+	public static function get_settings() {
 		$default_price_step = 1 / pow( 10, absint( get_option( 'woocommerce_price_num_decimals', 2 ) ) );
 		$settings = array(
 
