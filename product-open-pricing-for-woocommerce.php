@@ -125,7 +125,7 @@ final class Alg_WC_Product_Open_Pricing {
 		<table class="wc_status_table widefat" cellspacing="0">
 			<thead>
 				<tr>
-					<th colspan="3" data-export-label="Currency Switcher Settings"><h2><?php esc_html_e( 'Product Open Pricing Settings', 'product-open-pricing-for-woocommerce' ); ?></h2></th>
+					<th colspan="3" data-export-label="Product Open Pricing Settings"><h2><?php esc_html_e( 'Product Open Pricing Settings', 'product-open-pricing-for-woocommerce' ); ?></h2></th>
 				</tr>
 			</thead>
 			<tbody>
