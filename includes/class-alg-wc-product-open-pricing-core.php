@@ -224,12 +224,21 @@ class Alg_WC_Product_Open_Pricing_Core {
 	 * @return  string
 	 */
 	function add_attribute_on_add_to_cart_button( $link, $product ) {
+	
+		// if required extensions are missing, stop here
+		if ( ! class_exists( 'DOMDocument') || ! function_exists( 'mb_convert_encoding' ) ) {
+			return $link;
+		}
+		
 		if (
 			'yes' !== get_option( 'alg_wc_product_open_pricing_field_on_loop', 'no' ) ||
 			! $this->is_open_price_product( $product )
 		) {
 			return $link;
 		}
+		
+		// Ensure UTF-8 is respected by using 'mb_convert_encoding'
+		$link = mb_convert_encoding( $link, 'HTML-ENTITIES', 'UTF-8' );
 
 		$id = $this->get_product_or_variation_parent_id( $product );
 
