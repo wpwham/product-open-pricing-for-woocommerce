@@ -220,6 +220,13 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 				'custom_attributes' => array( 'min' => '0' ),
 			),
 			array(
+				'title'    => __( 'Add To Cart button text', 'product-open-pricing-for-woocommerce' ),
+				'desc'     => __( 'Applies to Open Pricing products only. Leave blank for WooCommerce default text.', 'product-open-pricing-for-woocommerce' ),
+				'id'       => 'wpw_pop_add_to_cart_text',
+				'default'  => '',
+				'type'     => 'text',
+			),
+			array(
 				'type'     => 'sectionend',
 				'id'       => 'alg_wc_product_open_pricing_general_options',
 			),

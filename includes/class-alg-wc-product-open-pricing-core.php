@@ -453,11 +453,18 @@ class Alg_WC_Product_Open_Pricing_Core {
 	 * @since   1.0.0
 	 */
 	function add_to_cart_text( $text, $_product ) {
-		if ( 'yes' !== get_option( 'alg_wc_product_open_pricing_field_on_loop', 'no' ) ) {
-			return ( $this->is_open_price_product( $_product ) ) ? __( 'Read more', 'woocommerce' ) : $text;
-		} else {
-			return $text;
+		if ( $this->is_open_price_product( $_product ) ) {
+			if ( get_option( 'wpw_pop_add_to_cart_text' ) > '' ) {
+				// if "add to cart" text is specified in settings, always use it for open pricing products
+				return get_option( 'wpw_pop_add_to_cart_text' );
+			} elseif ( get_option( 'alg_wc_product_open_pricing_field_on_loop', 'no' ) !== 'yes' ) {
+				// if display in loop is NOT enabled, we can't add to cart until the price is determined.
+				// therefore we use the 'read more' message and direct to the product page.
+				// ( see add_to_cart_url() )
+				return __( 'Read more', 'woocommerce' );
+			}
 		}
+		return $text;
 	}
 
 	/**
