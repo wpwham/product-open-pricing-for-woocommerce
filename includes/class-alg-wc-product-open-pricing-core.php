@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.4.5
+ * @version 1.5.0
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -217,7 +217,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * Adds attribute data-alg_open_price on 'Add to Cart' button on loop pages.
 	 *
-	 * @version 1.2.0
+	 * @version 1.5.0
 	 * @since   1.1.9
 	 * @param   $link
 	 * @param   $product
@@ -449,7 +449,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * add_to_cart_text.
 	 *
-	 * @version 1.1.9
+	 * @version 1.5.0
 	 * @since   1.0.0
 	 */
 	function add_to_cart_text( $text, $_product ) {
@@ -580,7 +580,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * add_open_price_to_cart_item_data.
 	 *
-	 * @version 1.1.6
+	 * @version 1.5.0
 	 * @since   1.0.0
 	 */
 	function add_open_price_to_cart_item_data( $cart_item_data, $product_id, $variation_id ) {
