@@ -584,14 +584,28 @@ class Alg_WC_Product_Open_Pricing_Core {
 	 * @since   1.0.0
 	 */
 	function add_open_price_to_cart_item_data( $cart_item_data, $product_id, $variation_id ) {
+		
+		$_product = wc_get_product( $product_id );
+		
+		// make sure $_product didn't return something unexpected
+		if ( ! is_a( $_product, 'WC_Product' ) ) {
+			return $cart_item_data;
+		}
+		
+		// make sure we're acting only on open price products (in case of grouped products, for example)
+		if ( ! $this->is_open_price_product( $_product ) ) {
+			return $cart_item_data;
+		}
+		
 		if ( isset( $_REQUEST['alg_open_price'] ) ) {
 			$cart_item_data['alg_open_price'] = $this->sanitize_open_price( $_REQUEST['alg_open_price'] );
 		}
+		
 		if ( function_exists( 'alg_wc_currency_switcher_plugin' ) ) {
 			$current_currency_code = alg_get_current_currency_code();
 			$cart_item_data['alg_open_price_curr'] = $current_currency_code;
 		}
-
+		
 		return $cart_item_data;
 	}
 
