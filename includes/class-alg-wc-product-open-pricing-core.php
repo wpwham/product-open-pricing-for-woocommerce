@@ -601,6 +601,10 @@ class Alg_WC_Product_Open_Pricing_Core {
 			$cart_item_data['alg_open_price'] = $this->sanitize_open_price( $_REQUEST['alg_open_price'] );
 		}
 		
+		if ( isset( $_REQUEST['addon-wpw_pop_open_price'] ) ) {
+			$cart_item_data['alg_open_price'] = $this->sanitize_open_price( $_REQUEST['addon-wpw_pop_open_price'] );
+		}
+		
 		if ( function_exists( 'alg_wc_currency_switcher_plugin' ) ) {
 			$current_currency_code = alg_get_current_currency_code();
 			$cart_item_data['alg_open_price_curr'] = $current_currency_code;
