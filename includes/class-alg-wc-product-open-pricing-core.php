@@ -14,6 +14,8 @@ if ( ! class_exists( 'Alg_WC_Product_Open_Pricing_Core' ) ) :
 
 class Alg_WC_Product_Open_Pricing_Core {
 
+	private $adjusted_items_cache = array();
+
 	/**
 	 * Constructor.
 	 *
@@ -50,7 +52,6 @@ class Alg_WC_Product_Open_Pricing_Core {
 
 			// Other hooks
 			add_action( 'woocommerce_before_calculate_totals',    array( $this, 'override_product_price' ), 10, 1 );
-			add_action( 'woocommerce_before_calculate_totals',    array( $this, 'convert_before_calculate_totals_currency_switcher' ), 11, 1 );
 			add_action( 'aopwc_value',                            array( $this, 'convert_price_currency_switcher' ), 10, 2 );
 			add_filter( 'woocommerce_loop_add_to_cart_link',      array( $this, 'add_attribute_on_add_to_cart_button' ), 10, 2 );
 			add_action( 'wp_footer',                              array( $this, 'sync_add_to_cart_button_attribute' ) );
@@ -289,7 +290,6 @@ class Alg_WC_Product_Open_Pricing_Core {
 		$current_currency_code = alg_get_current_currency_code();
 		$default_currency      = get_option( 'woocommerce_currency' );
 
-		// Converts Back, since WooCommerce gets in the way
 		$value = alg_convert_price( array(
 			'price'         => $value,
 			'currency_from' => $default_currency,
@@ -300,7 +300,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 
 		return $value;
 	}
-
+	
 	/**
 	 * Overrides product price.
 	 *
@@ -309,75 +309,86 @@ class Alg_WC_Product_Open_Pricing_Core {
 	 * @param   $cart_obj
 	 */
 	function override_product_price( $cart_obj ) {
+		
 		if ( is_admin() ) {
 			return;
 		}
-		foreach ( $cart_obj->get_cart() as $key => $item ) {
+		
+		$cart = $cart_obj->get_cart();
+		
+		foreach ( $cart as $item ) {
+			
 			if ( ! isset( $item['alg_open_price'] ) ) {
 				continue;
 			}
-
-			$final_value = $item['alg_open_price'];
-			$item['data']->set_price( $final_value );
-			$item['alg_open_price'] = $final_value;
-		}
-	}
-
-	/**
-	 * Converts pricing, if using currency switcher.
-	 *
-	 * @version 1.1.7
-	 * @since   1.1.6
-	 */
-	function convert_before_calculate_totals_currency_switcher( $cart_obj ) {
-
-		if (
-			is_admin() ||
-			! function_exists( 'alg_wc_currency_switcher_plugin' )
-		) {
-			return;
-		}
-
-		foreach ( $cart_obj->get_cart() as $key => $item ) {
-
-			if (
-				! isset( $item['alg_open_price_curr'] ) ||
-				! isset( $item['alg_open_price'] )
-			) {
+			
+			if ( isset( $this->adjusted_items_cache[ $item['key'] ] ) ) {
+				// prevents double adjustments
 				continue;
 			}
-
-			$current_currency_code = alg_get_current_currency_code();
-			$default_currency      = get_option( 'woocommerce_currency' );
-
-			// Converts Back, since WooCommerce gets in the way
-			$final_value = alg_convert_price( array(
-				'price'         => $item['alg_open_price'],
-				'currency_from' => $current_currency_code,
-				'currency'      => $default_currency,
-				'format_price'  => 'no'
-			) );
-			$item['data']->set_price( $final_value );
-			$item['alg_open_price'] = $final_value;
-
-			// Converts again if different currency
-			if (
-				! empty( $item['alg_open_price_curr'] ) &&
-				$item['alg_open_price_curr'] != $current_currency_code
-			) {
-				$final_value                 = alg_convert_price( array(
-					'price'         => $item['alg_open_price'],
-					'currency_from' => $item['alg_open_price_curr'],
-					'currency'      => $current_currency_code,
+			
+			$price = $item['data']->get_price();
+			
+			if ( function_exists( 'alg_wc_currency_switcher_plugin' ) ) {
+				
+				// compatibility for Currency Switcher for WooCommerce
+				$current_currency_code = alg_get_current_currency_code();
+				$default_currency      = get_option( 'woocommerce_currency' );
+				
+				if ( ! isset( $item['alg_open_price_curr'] ) ) {
+					$item['alg_open_price_curr'] = $default_currency;
+				}
+				
+				// Convert $price back to shop's default currency
+				// (If there's anything in $price at this point its not from us... its from
+				// some other plugin like Product Addons, therefore we need to deal in the
+				// same currency.)
+				$price = alg_convert_price( array(
+					'price'         => $price,
+					'currency_from' => $current_currency_code,
+					'currency'      => $default_currency,
 					'format_price'  => 'no'
 				) );
-				$item['alg_open_price_curr'] = $current_currency_code;
-				$item['data']->set_price( $final_value );
-				$item['alg_open_price'] = $final_value;
+				
+				// Do we need to convert the open pricing product too?
+				if (
+					! empty( $item['alg_open_price_curr'] )
+					&& $item['alg_open_price_curr'] !== $default_currency
+				) {
+					
+					// If open pricing product was added in a currency other than the shop's default,
+					// convert that value back to the shop default and combine with $price.
+					$price = $price + alg_convert_price( array(
+						'price'         => $item['alg_open_price'],
+						'currency_from' => $item['alg_open_price_curr'],
+						'currency'      => $default_currency,
+						'format_price'  => 'no'
+					) );
+					// at this point, $price is the correct value in the shop's default currency,
+					// and will be converted automatically to the user's currency by Currency Switcher
+					// later on, if applicable.
+					
+				} else {
+					
+					// Open pricing product was added in shop's default currency. No conversion
+					// needed.
+					$price = $price + $item['alg_open_price'];
+					
+				}
+				
+			} else {
+				
+				// no special handling needed... straight addition
+				$price = $price + $item['alg_open_price'];
+				
 			}
+			
+			$item['data']->set_price( $price );
+			$this->adjusted_items_cache[ $item['key'] ] = true;
+			
 		}
 	}
-
+	
 	/**
 	 * get_product_or_variation_parent_id.
 	 *

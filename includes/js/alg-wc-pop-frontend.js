@@ -14,6 +14,13 @@
 		e.val( value.toFixed( alg_wc_pop_data_object.force_decimal_width ) );
 	}
 	
+	function wpw_pop_product_addons_compatibility( amount ){
+		if ( $( '#product-addons-total' ).length ) {
+			$( '#product-addons-total' ).data( 'price', amount );
+			$( '.cart' ).trigger( 'woocommerce-product-addons-update' );
+		}
+	}
+	
 	function wpw_pop_stripe_applepay_shiv( amount ){
 		
 		// This is dumb, but since no other hooks are available to us, this is the
@@ -45,12 +52,15 @@
 	
 	$( document ).ready( function(){
 		$( '.alg_open_price' ).each( function(){
-			alg_wc_pop_force_decimals( $( this ) );
 			$( this ).on( 'change', function(){
 				alg_wc_pop_force_decimals( $( this ) );
-				wpw_pop_stripe_applepay_shiv( $( this ).val() );
 			});
 		});
+		$( '.alg_open_price' ).first().on( 'change', function(){
+			wpw_pop_product_addons_compatibility( $( this ).val() );
+			wpw_pop_stripe_applepay_shiv( $( this ).val() );
+		});
+		$( '.alg_open_price' ).first().trigger( 'change' );
 	});
 	
 })( jQuery );
