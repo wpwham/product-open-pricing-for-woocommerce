@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.5.0
+ * @version 1.6.0
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -19,7 +19,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.3.1
+	 * @version 1.6.0
 	 * @since   1.0.0
 	 * @todo    [dev] (maybe) add AJAX/instant updating (#11777)
 	 * @todo    [feature] open pricing **per variation** (#11726)
@@ -100,7 +100,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * enqueue_scripts_frontend.
 	 *
-	 * @version 1.3.1
+	 * @version 1.6.0
 	 * @since   1.3.1
 	 */
 	function enqueue_scripts_frontend() {
@@ -231,7 +231,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * Adds attribute data-alg_open_price on 'Add to Cart' button on loop pages.
 	 *
-	 * @version 1.5.0
+	 * @version 1.6.0
 	 * @since   1.1.9
 	 * @param   $link
 	 * @param   $product
@@ -329,7 +329,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * Overrides product price.
 	 *
-	 * @version 1.1.7
+	 * @version 1.6.0
 	 * @since   1.1.7
 	 * @param   $cart_obj
 	 */
@@ -626,7 +626,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * add_open_price_to_cart_item_data.
 	 *
-	 * @version 1.5.0
+	 * @version 1.6.0
 	 * @since   1.0.0
 	 */
 	function add_open_price_to_cart_item_data( $cart_item_data, $product_id, $variation_id ) {
@@ -675,7 +675,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * add_open_price_input_field_to_frontend.
 	 *
-	 * @version 1.4.5
+	 * @version 1.6.0
 	 * @since   1.0.0
 	 * @todo    [feature] (maybe) step on **per product** basis
 	 */

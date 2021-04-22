@@ -2,8 +2,8 @@
 Contributors: wpwham
 Tags: woocommerce, product open pricing, open pricing, name your price
 Requires at least: 4.4
-Tested up to: 5.6
-Stable tag: 1.5.0
+Tested up to: 5.7
+Stable tag: 1.6.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,12 @@ The [premium version](https://wpwham.com/products/product-open-pricing-name-your
 3. Start by visiting plugin settings at "WooCommerce > Settings > Product Open Pricing".
 
 == Changelog ==
+
+= 1.6.0 - 2021-04-22 =
+* NEW: compatibility with "WooCommerce Product Add-ons" plugin (the official WooCommerce one).
+* NEW: compatibility with WooCommerce Stripe Gateway's Apple Pay button.
+* FIX: make sure "step" defaults to "any" (on open price input field).
+* UPDATE: minor code refactoring.
 
 = 1.5.0 - 2020-12-28 =
 * NEW: Add setting for "add to cart" button text.
