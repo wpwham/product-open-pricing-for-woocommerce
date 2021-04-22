@@ -53,11 +53,16 @@
 	}
 	
 	$( document ).ready( function(){
-		$( '.alg_open_price' ).each( function(){
-			$( this ).on( 'change', function(){
-				alg_wc_pop_force_decimals( $( this ) );
+		if (
+			typeof alg_wc_pop_data_object.force_decimals !== "undefined"
+			&& alg_wc_pop_data_object.force_decimals
+		) {
+			$( '.alg_open_price' ).each( function(){
+				$( this ).on( 'change', function(){
+					alg_wc_pop_force_decimals( $( this ) );
+				});
 			});
-		});
+		}
 		$( '.alg_open_price' ).first().on( 'change', function(){
 			wpw_pop_product_addons_compatibility( $( this ).val() );
 			wpw_pop_stripe_applepay_shiv( $( this ).val() );

@@ -88,9 +88,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 			}
 
 			// Frontend script
-			if ( 'yes' === get_option( 'alg_wc_product_open_pricing_force_decimal_width_enabled', 'no' ) ) {
-				add_action( 'wp_enqueue_scripts',                 array( $this, 'enqueue_scripts_frontend' ), PHP_INT_MAX );
-			}
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts_frontend' ) );
 			
 			// compatibility with WooCommerce Stripe Gateway's Apple Pay
 			add_filter('wc_stripe_payment_request_params', array( $this, 'woocommerce_stripe_applepay_set_default_price' ) );
@@ -106,11 +104,21 @@ class Alg_WC_Product_Open_Pricing_Core {
 	 * @since   1.3.1
 	 */
 	function enqueue_scripts_frontend() {
-		wp_enqueue_script( 'alg-wc-pop-frontend',
-			alg_wc_product_open_pricing()->plugin_url() . '/includes/js/alg-wc-pop-frontend.js', array( 'jquery' ), alg_wc_product_open_pricing()->version, true );
-		wp_localize_script( 'alg-wc-pop-frontend',
+		wp_enqueue_script(
+			'alg-wc-pop-frontend',
+			alg_wc_product_open_pricing()->plugin_url() . '/includes/js/alg-wc-pop-frontend.js',
+			array( 'jquery' ),
+			alg_wc_product_open_pricing()->version,
+			true
+		);
+		wp_localize_script(
+			'alg-wc-pop-frontend',
 			'alg_wc_pop_data_object',
-			array( 'force_decimal_width' => get_option( 'alg_wc_product_open_pricing_force_decimal_width', get_option( 'woocommerce_price_num_decimals', 2 ) ) ) );
+			array(
+				'force_decimals' => get_option( 'alg_wc_product_open_pricing_force_decimal_width_enabled', 'no' ) === 'yes',
+				'force_decimal_width' => get_option( 'alg_wc_product_open_pricing_force_decimal_width', get_option( 'woocommerce_price_num_decimals', 2 ) ),
+			)
+		);
 
 	}
 
