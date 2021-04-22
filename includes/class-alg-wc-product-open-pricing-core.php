@@ -263,7 +263,13 @@ class Alg_WC_Product_Open_Pricing_Core {
 		$value = get_post_meta( $id, '_' . 'alg_wc_product_open_pricing_default_price', true );
 
 		$dom = new DOMDocument();
-		@$dom->loadHTML( $link );
+		
+		if ( version_compare( LIBXML_DOTTED_VERSION, '2.7.8', '>=' ) ) {
+			@$dom->loadHTML( '<html><body>'.$link.'</body></html>', LIBXML_HTML_NODEFDTD );
+		} else {
+			@$dom->loadHTML( '<!DOCTYPE html><html><body>'.$link.'</body></html>' );
+		}
+		
 		$x = new DOMXPath( $dom );
 
 		foreach ( $x->query( "//a" ) as $node ) {
@@ -277,6 +283,12 @@ class Alg_WC_Product_Open_Pricing_Core {
 			}
 		}
 		$newHtml = $dom->saveHtml();
+		
+		if ( version_compare( LIBXML_DOTTED_VERSION, '2.7.8', '<' ) ) {
+			$newHtml = str_replace( '<!DOCTYPE html>', '', $newHtml );
+		}
+		$newHtml = str_replace( '<html><body>', '', $newHtml );
+		$newHtml = str_replace( '</body></html>', '', $newHtml );
 
 		return $newHtml;
 	}
