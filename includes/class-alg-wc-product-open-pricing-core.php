@@ -327,7 +327,17 @@ class Alg_WC_Product_Open_Pricing_Core {
 				continue;
 			}
 			
-			$price = $item['data']->get_price();
+			$price = floatval( $item['data']->get_price() );
+			
+			// take WC product price out of the $price... we want only what's left,
+			// i.e. anything that's been added on by other plugins.
+			$db_price = floatval( get_post_meta( $item['data']->get_id(), '_price', true ) );
+			if ( $db_price ) {
+				$price = $price - $db_price;
+			}
+			if ( $price < 0 ) {
+				$price = 0;
+			}
 			
 			if ( function_exists( 'alg_wc_currency_switcher_plugin' ) ) {
 				
