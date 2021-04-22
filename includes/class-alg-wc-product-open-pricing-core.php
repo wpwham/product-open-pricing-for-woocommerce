@@ -91,9 +91,14 @@ class Alg_WC_Product_Open_Pricing_Core {
 			if ( 'yes' === get_option( 'alg_wc_product_open_pricing_force_decimal_width_enabled', 'no' ) ) {
 				add_action( 'wp_enqueue_scripts',                 array( $this, 'enqueue_scripts_frontend' ), PHP_INT_MAX );
 			}
+			
+			// compatibility with WooCommerce Stripe Gateway's Apple Pay
+			add_filter('wc_stripe_payment_request_params', array( $this, 'woocommerce_stripe_applepay_set_default_price' ) );
+			add_filter( $get_price_filter, array( $this, 'woocommerce_stripe_applepay_correct_price_after_button_press' ), 10, 2 );
+			
 		}
 	}
-
+	
 	/**
 	 * enqueue_scripts_frontend.
 	 *
@@ -744,7 +749,54 @@ class Alg_WC_Product_Open_Pricing_Core {
 			}
 		}
 	}
+	
+	/*
+	 * woocommerce_stripe_applepay_set_default_price.
+	 *
+	 * @since 1.6.0
+	 */
+	function woocommerce_stripe_applepay_set_default_price( $stripe_params ) {
+		// For the apple pay button on product pages.
+		// When the page first loads, before the user has given us the open price amount, the
+		// price of the product will be 0.  Apple pay freaks out about this and won't show the
+		// button, so we have to make up an amount to start with.  Let's use $1.00 (100 in Stripe format):
+		$stripe_params['product']['total']['amount'] = 100;
+		return $stripe_params;
+	}
 
+	/*
+	 * woocommerce_stripe_applepay_correct_price_after_button_press.
+	 *
+	 * @since 1.6.0
+	 */
+	function woocommerce_stripe_applepay_correct_price_after_button_press( $price, $_product ) {
+		// For the apple pay button on product pages.
+		// After the user clicks the apple pay button, it fetches the product data over again
+		// via ajax.  The real product price (according to woocommerce) will still be 0 at this point,
+		// because it has not yet been added to the cart using the user's chosen amount.  Apple pay freaks
+		// out about this, so we again have to make up an amount to start with... we'll stick with $1.00,
+		// same as before. (See woocommerce_stripe_applepay_set_default_price()).
+		if ( check_ajax_referer( 'wc-stripe-get-selected-product-data', 'security', false ) ) {
+			if ( $this->is_open_price_product( $_product ) ) {
+				$addon_value = isset( $_POST['addon_value'] ) ? max( floatval( $_POST['addon_value'] ), 0 ) : 0;
+				if ( $addon_value > 1 
+					&& ! isset( $this->adjusted_items_cache['post_addon_value'] )
+				) {
+					// The real amount (the one chosen by the user) is contained in $_POST['addon_value'].
+					// See /includes/js/alg-wc-pop-frontend.js for how this is populated.  We have to subtract
+					// $1.00 at this point to offset the $1.00 starting amount we made up.
+					// Yes, we modify $_POST directly (sucks, I know, but there is no filter available in the
+					// WooCommerce Stripe Gateway to help us here... this is the only way to get it to do what
+					// we need it to do). When WC Stripe puts the final total together, all will be correct.
+					$_POST['addon_value'] = $addon_value - 1;
+					$this->adjusted_items_cache['post_addon_value'] = true;
+				}
+				return 1;
+			}
+		}
+		return $price;
+	}
+	
 }
 
 endif;

@@ -23,6 +23,8 @@
 	
 	function wpw_pop_stripe_applepay_shiv( amount ){
 		
+		amount = parseFloat( amount );
+		
 		// This is dumb, but since no other hooks are available to us, this is the
 		// only way to pass the user-selected amount into the ajax request made by
 		// WooCommerce Stripe Gateway (https://wordpress.org/plugins/woocommerce-gateway-stripe/)
