@@ -122,7 +122,7 @@ class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
 				'title'      => __( 'Max price', 'product-open-pricing-for-woocommerce' ) . ' (' . get_woocommerce_currency_symbol() . ')',
 			),
 		);
-		return $options;
+		return apply_filters( 'wpwham_product_open_pricing_metabox_options', $options );
 	}
 
 	/**
