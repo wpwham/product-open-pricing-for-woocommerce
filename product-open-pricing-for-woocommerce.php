@@ -193,7 +193,7 @@ final class Alg_WC_Product_Open_Pricing {
 		$custom_links = array();
 		$custom_links[] = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_product_open_pricing' ) . '">' . __( 'Settings', 'woocommerce' ) . '</a>';
 		if ( 'product-open-pricing-for-woocommerce.php' === basename( __FILE__ ) ) {
-			$custom_links[] = '<a href="https://wpwham.com/products/product-open-pricing-name-your-price-for-woocommerce/">' . __( 'Unlock All', 'product-open-pricing-for-woocommerce' ) . '</a>';
+			$custom_links[] = '<a href="https://wpwham.com/products/product-open-pricing-name-your-price-for-woocommerce/?utm_source=plugins_page&utm_campaign=free&utm_medium=product_open_pricing">' . __( 'Unlock All', 'product-open-pricing-for-woocommerce' ) . '</a>';
 		}
 		return array_merge( $custom_links, $links );
 	}

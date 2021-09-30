@@ -80,7 +80,7 @@ class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
 			return;
 		}
 		echo '<div class="error"><p><div class="message">' .
-			sprintf( 'Free plugin\'s version is limited to only one open pricing product enabled at a time. You will need to get <a href="%s" target="_blank">Product Open Pricing for WooCommerce Pro</a> to add unlimited number of open pricing products.', 'https://wpwham.com/products/product-open-pricing-name-your-price-for-woocommerce/' ) .
+			sprintf( 'Free plugin\'s version is limited to only one open pricing product enabled at a time. You will need to get <a href="%s" target="_blank">Product Open Pricing for WooCommerce Pro</a> to add unlimited number of open pricing products.', 'https://wpwham.com/products/product-open-pricing-name-your-price-for-woocommerce/?utm_source=admin_notice&utm_campaign=free&utm_medium=product_open_pricing' ) .
 		'</div></p></div>';
 	}
 
