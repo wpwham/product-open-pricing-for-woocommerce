@@ -2,8 +2,8 @@
 Contributors: wpwham
 Tags: woocommerce, product open pricing, open pricing, name your price
 Requires at least: 4.4
-Tested up to: 5.7
-Stable tag: 1.6.0
+Tested up to: 5.8
+Stable tag: 1.7.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,12 @@ The [premium version](https://wpwham.com/products/product-open-pricing-name-your
 3. Start by visiting plugin settings at "WooCommerce > Settings > Product Open Pricing".
 
 == Changelog ==
+
+= 1.7.0 - 2021-09-30 =
+* UPDATE: PHP 8 now officially supported.
+* UPDATE: disable Payment Request Buttons on product page for open pricing products. An amount must be entered and added to cart first. (DETAILS: PRBs [e.g. Apple Pay / Google Pay / PayPal] don't always work well with open pricing products, since the price is not determined until after the user selects the amount.  In v1.6.0 we used a temporary price of $1 in the background, which would be updated later with the real user-entered amount.  However this caused problems with Apple Pay in certain [not all] situations, where the user could possibly still see that $1 amount on the initial Apple Pay screen. The correct amount would be charged at the end, but this was too confusing to customers.  We've concluded the only 100% reliable way to handle these cases is to make sure the open pricing product is fully added to cart BEFORE the payment process begins.)
+* UPDATE: added filter 'wpwham_product_open_pricing_metabox_options'.
+* UPDATE: updated .pot file for translations.
 
 = 1.6.0 - 2021-04-22 =
 * NEW: compatibility with "WooCommerce Product Add-ons" plugin (the official WooCommerce one).

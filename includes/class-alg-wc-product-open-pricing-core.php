@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.6.0
+ * @version 1.7.0
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -19,7 +19,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.6.0
+	 * @version 1.7.0
 	 * @since   1.0.0
 	 * @todo    [dev] (maybe) add AJAX/instant updating (#11777)
 	 * @todo    [feature] open pricing **per variation** (#11726)
@@ -773,7 +773,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/*
 	 * woocommerce_paypal_express_checkout_hide_button_on_product_page.
 	 *
-	 * @since 1.x.x
+	 * @since 1.7.0
 	 */
 	public function woocommerce_paypal_express_checkout_hide_button_on_product_page( $value ) {
 		global $product;
@@ -786,7 +786,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/*
 	 * woocommerce_stripe_hide_payment_request_on_product_page.
 	 *
-	 * @since 1.x.x
+	 * @since 1.7.0
 	 */
 	public function woocommerce_stripe_hide_payment_request_on_product_page( $value, $product ) {
 		if ( is_a( $product, 'WC_Product' ) && $this->is_open_price_product( $product ) ) {

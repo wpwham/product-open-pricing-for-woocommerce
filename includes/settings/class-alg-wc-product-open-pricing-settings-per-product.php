@@ -2,9 +2,10 @@
 /**
  * Product Open Pricing for WooCommerce - Per Product Section Settings
  *
- * @version 1.3.0
+ * @version 1.7.0
  * @since   1.0.0
  * @author  Algoritmika Ltd.
+ * @author  WP Wham
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -71,7 +72,7 @@ class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
 	/**
 	 * admin_notices.
 	 *
-	 * @version 1.3.0
+	 * @version 1.7.0
 	 * @since   1.0.0
 	 * @todo    [dev] (maybe) three?
 	 */
@@ -87,7 +88,7 @@ class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
 	/**
 	 * get_meta_box_options.
 	 *
-	 * @version 1.2.5
+	 * @version 1.7.0
 	 * @since   1.0.0
 	 */
 	function get_meta_box_options() {

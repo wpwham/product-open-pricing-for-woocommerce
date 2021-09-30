@@ -1,7 +1,7 @@
 /**
  * alg-wc-pop-frontend.js.
  *
- * @version 1.6.0
+ * @version 1.7.0
  * @since   1.3.1
  */
 
