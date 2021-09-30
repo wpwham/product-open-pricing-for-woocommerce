@@ -3,12 +3,12 @@
 Plugin Name: Product Open Pricing (Name Your Price) for WooCommerce
 Plugin URI: https://wpwham.com/products/product-open-pricing-name-your-price-for-woocommerce/
 Description: Open price (i.e. Name your price) products for WooCommerce.
-Version: 1.6.0
+Version: 1.7.0
 Author: WP Wham
 Author URI: https://wpwham.com/
 Text Domain: product-open-pricing-for-woocommerce
 Domain Path: /langs
-WC tested up to: 5.2
+WC tested up to: 5.7
 Copyright: © 2018-2021 WP Wham. All rights reserved.
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -36,13 +36,17 @@ if ( 'product-open-pricing-for-woocommerce.php' === basename( __FILE__ ) ) {
 	}
 }
 
+if ( ! defined( 'WPWHAM_PRODUCT_OPEN_PRICING_VERSION' ) ) {
+	define( 'WPWHAM_PRODUCT_OPEN_PRICING_VERSION', '1.7.0' );
+}
+
 if ( ! class_exists( 'Alg_WC_Product_Open_Pricing' ) ) :
 
 /**
  * Main Alg_WC_Product_Open_Pricing Class
  *
  * @class   Alg_WC_Product_Open_Pricing
- * @version 1.4.6
+ * @version 1.7.0
  * @since   1.0.0
  */
 final class Alg_WC_Product_Open_Pricing {
@@ -53,7 +57,7 @@ final class Alg_WC_Product_Open_Pricing {
 	 * @var   string
 	 * @since 1.0.0
 	 */
-	public $version = '1.6.0';
+	public $version = '1.7.0';
 
 	/**
 	 * @var   Alg_WC_Product_Open_Pricing The single instance of the class
@@ -184,7 +188,7 @@ final class Alg_WC_Product_Open_Pricing {
 	/**
 	 * Show action links on the plugin screen.
 	 *
-	 * @version 1.2.5
+	 * @version 1.7.0
 	 * @since   1.0.0
 	 * @param   mixed $links
 	 * @return  array
@@ -193,7 +197,7 @@ final class Alg_WC_Product_Open_Pricing {
 		$custom_links = array();
 		$custom_links[] = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_product_open_pricing' ) . '">' . __( 'Settings', 'woocommerce' ) . '</a>';
 		if ( 'product-open-pricing-for-woocommerce.php' === basename( __FILE__ ) ) {
-			$custom_links[] = '<a href="https://wpwham.com/products/product-open-pricing-name-your-price-for-woocommerce/">' . __( 'Unlock All', 'product-open-pricing-for-woocommerce' ) . '</a>';
+			$custom_links[] = '<a href="https://wpwham.com/products/product-open-pricing-name-your-price-for-woocommerce/?utm_source=plugins_page&utm_campaign=free&utm_medium=product_open_pricing">' . __( 'Unlock All', 'product-open-pricing-for-woocommerce' ) . '</a>';
 		}
 		return array_merge( $custom_links, $links );
 	}

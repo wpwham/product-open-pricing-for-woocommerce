@@ -2,9 +2,10 @@
 /**
  * Product Open Pricing for WooCommerce - Per Product Section Settings
  *
- * @version 1.3.0
+ * @version 1.7.0
  * @since   1.0.0
  * @author  Algoritmika Ltd.
+ * @author  WP Wham
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -71,7 +72,7 @@ class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
 	/**
 	 * admin_notices.
 	 *
-	 * @version 1.3.0
+	 * @version 1.7.0
 	 * @since   1.0.0
 	 * @todo    [dev] (maybe) three?
 	 */
@@ -80,14 +81,14 @@ class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
 			return;
 		}
 		echo '<div class="error"><p><div class="message">' .
-			sprintf( 'Free plugin\'s version is limited to only one open pricing product enabled at a time. You will need to get <a href="%s" target="_blank">Product Open Pricing for WooCommerce Pro</a> to add unlimited number of open pricing products.', 'https://wpwham.com/products/product-open-pricing-name-your-price-for-woocommerce/' ) .
+			sprintf( 'Free plugin\'s version is limited to only one open pricing product enabled at a time. You will need to get <a href="%s" target="_blank">Product Open Pricing for WooCommerce Pro</a> to add unlimited number of open pricing products.', 'https://wpwham.com/products/product-open-pricing-name-your-price-for-woocommerce/?utm_source=admin_notice&utm_campaign=free&utm_medium=product_open_pricing' ) .
 		'</div></p></div>';
 	}
 
 	/**
 	 * get_meta_box_options.
 	 *
-	 * @version 1.2.5
+	 * @version 1.7.0
 	 * @since   1.0.0
 	 */
 	function get_meta_box_options() {
@@ -122,7 +123,7 @@ class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
 				'title'      => __( 'Max price', 'product-open-pricing-for-woocommerce' ) . ' (' . get_woocommerce_currency_symbol() . ')',
 			),
 		);
-		return $options;
+		return apply_filters( 'wpwham_product_open_pricing_metabox_options', $options );
 	}
 
 	/**

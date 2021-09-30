@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - General Section Settings
  *
- * @version 1.5.0
+ * @version 1.7.0
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -29,7 +29,7 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.5.0
+	 * @version 1.7.0
 	 * @since   1.0.0
 	 */
 	public static function get_settings() {
@@ -44,7 +44,11 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 			array(
 				'title'    => __( 'Product Open Pricing (Name Your Price)', 'product-open-pricing-for-woocommerce' ),
 				'desc'     => '<strong>' . __( 'Enable plugin', 'product-open-pricing-for-woocommerce' ) . '</strong>',
-				'desc_tip' => __( 'Let your WooCommerce store customers enter price for the product manually.', 'product-open-pricing-for-woocommerce' ),
+				'desc_tip' => 
+					__( 'Product Open Pricing (Name Your Price)', 'product-open-pricing-for-woocommerce' )
+					. ' v' . WPWHAM_PRODUCT_OPEN_PRICING_VERSION . '.<br />'
+					. '<a href="https://wpwham.com/documentation/product-open-pricing-name-your-price-for-woocommerce/?utm_source=documentation_link&utm_campaign=free&utm_medium=product_open_pricing" target="_blank" class="button">' .
+					__( 'Documentation', 'product-open-pricing-for-woocommerce' ) . '</a>',
 				'id'       => 'alg_wc_product_open_pricing_enabled',
 				'default'  => 'yes',
 				'type'     => 'checkbox',
