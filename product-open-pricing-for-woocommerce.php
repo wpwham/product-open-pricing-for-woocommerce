@@ -36,6 +36,10 @@ if ( 'product-open-pricing-for-woocommerce.php' === basename( __FILE__ ) ) {
 	}
 }
 
+if ( ! defined( 'WPWHAM_PRODUCT_OPEN_PRICING_VERSION' ) ) {
+	define( 'WPWHAM_PRODUCT_OPEN_PRICING_VERSION', '1.6.0' );
+}
+
 if ( ! class_exists( 'Alg_WC_Product_Open_Pricing' ) ) :
 
 /**
