@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.7.0
+ * @version 1.7.1
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
