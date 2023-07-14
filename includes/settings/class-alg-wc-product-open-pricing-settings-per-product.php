@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Per Product Section Settings
  *
- * @version 1.7.0
+ * @version 1.7.1
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -13,7 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! class_exists( 'Alg_WC_Product_Open_Pricing_Settings_Per_Product' ) ) :
 
 class Alg_WC_Product_Open_Pricing_Settings_Per_Product {
-
+	
+	public $id = '';
+	
 	/**
 	 * Constructor.
 	 *

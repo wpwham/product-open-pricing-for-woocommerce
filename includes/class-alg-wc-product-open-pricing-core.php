@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.7.0
+ * @version 1.7.1
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -13,7 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! class_exists( 'Alg_WC_Product_Open_Pricing_Core' ) ) :
 
 class Alg_WC_Product_Open_Pricing_Core {
-
+	
+	public $is_wc_version_below_3 = null;
+	
 	private $adjusted_items_cache = array();
 
 	/**
