@@ -13,7 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! class_exists( 'Alg_WC_Product_Open_Pricing_Core' ) ) :
 
 class Alg_WC_Product_Open_Pricing_Core {
-
+	
+	public $is_wc_version_below_3 = null;
+	
 	private $adjusted_items_cache = array();
 
 	/**

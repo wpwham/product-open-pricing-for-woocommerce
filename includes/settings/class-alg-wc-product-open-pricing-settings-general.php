@@ -13,6 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! class_exists( 'Alg_WC_Product_Open_Pricing_Settings_General' ) ) :
 
 class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_Pricing_Settings_Section {
+	
+	public $id   = '';
+	public $desc = '';
 
 	/**
 	 * Constructor.

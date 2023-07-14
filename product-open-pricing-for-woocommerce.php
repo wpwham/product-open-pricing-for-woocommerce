@@ -51,6 +51,8 @@ if ( ! class_exists( 'Alg_WC_Product_Open_Pricing' ) ) :
  */
 final class Alg_WC_Product_Open_Pricing {
 
+	public $settings = null;
+
 	/**
 	 * Plugin version.
 	 *
