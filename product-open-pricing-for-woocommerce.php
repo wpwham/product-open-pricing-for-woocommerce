@@ -40,6 +40,12 @@ if ( ! defined( 'WPWHAM_PRODUCT_OPEN_PRICING_VERSION' ) ) {
 	define( 'WPWHAM_PRODUCT_OPEN_PRICING_VERSION', '1.7.1' );
 }
 
+add_action( 'before_woocommerce_init', function() {
+	if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+	}
+} );
+
 if ( ! class_exists( 'Alg_WC_Product_Open_Pricing' ) ) :
 
 /**
