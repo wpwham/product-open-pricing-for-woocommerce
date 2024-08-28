@@ -3,13 +3,13 @@
 Plugin Name: Product Open Pricing (Name Your Price) for WooCommerce
 Plugin URI: https://wpwham.com/products/product-open-pricing-name-your-price-for-woocommerce/
 Description: Open price (i.e. Name your price) products for WooCommerce.
-Version: 1.7.1
+Version: 1.7.2
 Author: WP Wham
 Author URI: https://wpwham.com/
 Text Domain: product-open-pricing-for-woocommerce
 Domain Path: /langs
-WC tested up to: 7.8
-Copyright: © 2018-2023 WP Wham. All rights reserved.
+WC tested up to: 9.2
+Copyright: © 2018-2024 WP Wham. All rights reserved.
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -37,7 +37,7 @@ if ( 'product-open-pricing-for-woocommerce.php' === basename( __FILE__ ) ) {
 }
 
 if ( ! defined( 'WPWHAM_PRODUCT_OPEN_PRICING_VERSION' ) ) {
-	define( 'WPWHAM_PRODUCT_OPEN_PRICING_VERSION', '1.7.1' );
+	define( 'WPWHAM_PRODUCT_OPEN_PRICING_VERSION', '1.7.2' );
 }
 
 add_action( 'before_woocommerce_init', function() {
@@ -52,7 +52,7 @@ if ( ! class_exists( 'Alg_WC_Product_Open_Pricing' ) ) :
  * Main Alg_WC_Product_Open_Pricing Class
  *
  * @class   Alg_WC_Product_Open_Pricing
- * @version 1.7.1
+ * @version 1.7.2
  * @since   1.0.0
  */
 final class Alg_WC_Product_Open_Pricing {
@@ -65,7 +65,7 @@ final class Alg_WC_Product_Open_Pricing {
 	 * @var   string
 	 * @since 1.0.0
 	 */
-	public $version = '1.7.1';
+	public $version = '1.7.2';
 
 	/**
 	 * @var   Alg_WC_Product_Open_Pricing The single instance of the class
