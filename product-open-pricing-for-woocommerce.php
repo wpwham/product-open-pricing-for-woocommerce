@@ -100,7 +100,7 @@ final class Alg_WC_Product_Open_Pricing {
 	function __construct() {
 
 		// Set up localisation
-		load_plugin_textdomain( 'product-open-pricing-for-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
+		add_action( 'init', array( $this, 'load_localization' ) );
 
 		// Include required files
 		$this->includes();
@@ -109,6 +109,13 @@ final class Alg_WC_Product_Open_Pricing {
 		if ( is_admin() ) {
 			$this->admin();
 		}
+	}
+	
+	/**
+	 * @since   1.7.3
+	 */
+	public function load_localization() {
+		load_plugin_textdomain( 'product-open-pricing-for-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
 	}
 
 	/**
