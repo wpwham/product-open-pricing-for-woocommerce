@@ -106,7 +106,7 @@ final class Alg_WC_Product_Open_Pricing {
 
 		// Admin
 		if ( is_admin() ) {
-			$this->admin();
+			add_action( 'plugins_loaded', array( $this, 'admin' ) );
 		}
 	}
 	

@@ -25,7 +25,9 @@ class Alg_WC_Product_Open_Pricing_Settings_General extends Alg_WC_Product_Open_P
 	 */
 	function __construct() {
 		$this->id   = '';
-		$this->desc = __( 'General', 'product-open-pricing-for-woocommerce' );
+		add_action( 'plugins_loaded', function() {
+			$this->desc = __( 'General', 'product-open-pricing-for-woocommerce' );
+		} );
 		parent::__construct();
 	}
 
