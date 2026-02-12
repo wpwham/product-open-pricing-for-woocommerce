@@ -747,11 +747,15 @@ class Alg_WC_Product_Open_Pricing_Core {
 			$title = get_option( 'alg_wc_product_open_pricing_label_frontend', __( 'Name Your Price', 'product-open-pricing-for-woocommerce' ) );
 
 			// Output
+			do_action( 'alg_wc_product_open_pricing_before_input_field_output', $product_id, $value, $min, $max, $is_loop );
+			
 			echo str_replace(
 				array( '%input_id%', '%open_price_input%', '%currency_symbol%', '%minimum_price%', '%max_price%', '%frontend_label%' ),
 				array( $input_id, $input_field, $currency_symbol_template, $min_template, $max_template, $title ),
 				$template
 			);
+
+			do_action( 'alg_wc_product_open_pricing_after_input_field_output', $product_id, $value, $min, $max, $is_loop );
 
 			// Disable step, if necessary
 			$step_enabled = get_option( 'alg_wc_product_open_pricing_enable_step', 'yes' );
