@@ -3,12 +3,12 @@
 Plugin Name: Product Open Pricing (Name Your Price) for WooCommerce
 Plugin URI: https://wpwham.com/products/product-open-pricing-name-your-price-for-woocommerce/
 Description: Open price (i.e. Name your price) products for WooCommerce.
-Version: 1.7.3
+Version: 1.7.4
 Author: WP Wham
 Author URI: https://wpwham.com/
 Text Domain: product-open-pricing-for-woocommerce
 Domain Path: /langs
-Copyright: © 2018-2025 WP Wham. All rights reserved.
+Copyright: © 2018-2026 WP Wham. All rights reserved.
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -36,7 +36,7 @@ if ( 'product-open-pricing-for-woocommerce.php' === basename( __FILE__ ) ) {
 }
 
 if ( ! defined( 'WPWHAM_PRODUCT_OPEN_PRICING_VERSION' ) ) {
-	define( 'WPWHAM_PRODUCT_OPEN_PRICING_VERSION', '1.7.3' );
+	define( 'WPWHAM_PRODUCT_OPEN_PRICING_VERSION', '1.7.4' );
 }
 
 add_action( 'before_woocommerce_init', function() {
@@ -51,7 +51,7 @@ if ( ! class_exists( 'Alg_WC_Product_Open_Pricing' ) ) :
  * Main Alg_WC_Product_Open_Pricing Class
  *
  * @class   Alg_WC_Product_Open_Pricing
- * @version 1.7.3
+ * @version 1.7.4
  * @since   1.0.0
  */
 final class Alg_WC_Product_Open_Pricing {
@@ -64,7 +64,7 @@ final class Alg_WC_Product_Open_Pricing {
 	 * @var   string
 	 * @since 1.0.0
 	 */
-	public $version = '1.7.3';
+	public $version = '1.7.4';
 
 	/**
 	 * @var   Alg_WC_Product_Open_Pricing The single instance of the class
@@ -92,40 +92,45 @@ final class Alg_WC_Product_Open_Pricing {
 	/**
 	 * Alg_WC_Product_Open_Pricing Constructor.
 	 *
-	 * @version 1.7.3
+	 * @version 1.7.4
 	 * @since   1.0.0
 	 * @access  public
 	 */
-	function __construct() {
-
-		// Set up localisation
-		add_action( 'init', array( $this, 'load_localization' ) );
+	public function __construct() {
 
 		// Include required files
-		$this->includes();
+		add_action( 'init', array( $this, 'includes' ) );
 
 		// Admin
-		if ( is_admin() ) {
-			$this->admin();
+		add_action( 'woocommerce_system_status_report', array( $this, 'add_settings_to_status_report' ) );
+		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
+		add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_woocommerce_settings_tab' ) );
+
+		// Updates
+		if ( get_option( 'alg_wc_product_open_pricing_version', '' ) !== $this->version ) {
+			add_action( 'admin_init', array( $this, 'version_updated' ) );
 		}
 	}
 	
 	/**
-	 * @since   1.7.3
-	 */
-	public function load_localization() {
-		load_plugin_textdomain( 'product-open-pricing-for-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
-	}
-
-	/**
 	 * Include required core files used in admin and on the frontend.
 	 *
-	 * @version 1.3.0
+	 * @version 1.7.4
 	 * @since   1.0.0
 	 */
-	function includes() {
+	public function includes() {
+		// Localization
+		load_plugin_textdomain( 'product-open-pricing-for-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
 		// Core
 		require_once( 'includes/class-alg-wc-product-open-pricing-core.php' );
+		// Admin
+		if ( is_admin() ) {
+			require_once( 'includes/settings/class-alg-wc-product-open-pricing-settings-section.php' );
+			$this->settings = array();
+			$this->settings['general'] = require_once( 'includes/settings/class-alg-wc-product-open-pricing-settings-general.php' );
+			// Metaboxes (per Product Settings)
+			require_once( 'includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php' );
+		}
 	}
 
 	/**
@@ -174,29 +179,6 @@ final class Alg_WC_Product_Open_Pricing {
 		</table>
 		<?php
 		#endregion add_settings_to_status_report
-	}
-
-	/**
-	 * admin.
-	 *
-	 * @version 1.3.0
-	 * @since   1.3.0
-	 */
-	function admin() {
-		// Action links
-		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
-		// Settings
-		require_once( 'includes/settings/class-alg-wc-product-open-pricing-settings-section.php' );
-		$this->settings = array();
-		$this->settings['general'] = require_once( 'includes/settings/class-alg-wc-product-open-pricing-settings-general.php' );
-		add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_woocommerce_settings_tab' ) );
-		add_action( 'woocommerce_system_status_report', array( $this, 'add_settings_to_status_report' ) );
-		// Metaboxes (per Product Settings)
-		require_once( 'includes/settings/class-alg-wc-product-open-pricing-settings-per-product.php' );
-		// Version updated
-		if ( get_option( 'alg_wc_product_open_pricing_version', '' ) !== $this->version ) {
-			add_action( 'admin_init', array( $this, 'version_updated' ) );
-		}
 	}
 
 	/**
