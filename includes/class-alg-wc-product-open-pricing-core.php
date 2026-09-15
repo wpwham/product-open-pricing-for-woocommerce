@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.7.1
+ * @version 1.7.5
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -677,7 +677,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * add_open_price_input_field_to_frontend.
 	 *
-	 * @version 1.6.0
+	 * @version 1.7.5
 	 * @since   1.0.0
 	 * @todo    [feature] (maybe) step on **per product** basis
 	 */

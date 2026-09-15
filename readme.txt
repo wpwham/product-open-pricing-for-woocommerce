@@ -2,8 +2,8 @@
 Contributors: wpwham
 Tags: woocommerce, product open pricing, open pricing, name your price
 Requires at least: 4.4
-Tested up to: 6.9
-Stable tag: 1.7.4
+Tested up to: 7.1
+Stable tag: 1.7.5
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,9 @@ The [premium version](https://wpwham.com/products/product-open-pricing-name-your
 3. Start by visiting plugin settings at "WooCommerce > Settings > Product Open Pricing".
 
 == Changelog ==
+
+= 1.7.5 - 2026-09-15 =
+* UPDATE: added hooks 'wpwham_product_open_pricing_frontend_before_input_field' and 'wpwham_product_open_pricing_frontend_after_input_field'.
 
 = 1.7.4 - 2026-03-06 =
 * FIX: PHP notice.
