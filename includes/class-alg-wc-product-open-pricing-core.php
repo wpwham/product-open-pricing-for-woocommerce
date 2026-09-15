@@ -2,7 +2,7 @@
 /**
  * Product Open Pricing for WooCommerce - Core Class
  *
- * @version 1.7.1
+ * @version 1.7.5
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -677,7 +677,7 @@ class Alg_WC_Product_Open_Pricing_Core {
 	/**
 	 * add_open_price_input_field_to_frontend.
 	 *
-	 * @version 1.6.0
+	 * @version 1.7.5
 	 * @since   1.0.0
 	 * @todo    [feature] (maybe) step on **per product** basis
 	 */
@@ -747,11 +747,15 @@ class Alg_WC_Product_Open_Pricing_Core {
 			$title = get_option( 'alg_wc_product_open_pricing_label_frontend', __( 'Name Your Price', 'product-open-pricing-for-woocommerce' ) );
 
 			// Output
+			do_action( 'wpwham_product_open_pricing_frontend_before_input_field', $product_id, $value, $min, $max, $is_loop );
+			
 			echo str_replace(
 				array( '%input_id%', '%open_price_input%', '%currency_symbol%', '%minimum_price%', '%max_price%', '%frontend_label%' ),
 				array( $input_id, $input_field, $currency_symbol_template, $min_template, $max_template, $title ),
 				$template
 			);
+
+			do_action( 'wpwham_product_open_pricing_frontend_after_input_field', $product_id, $value, $min, $max, $is_loop );
 
 			// Disable step, if necessary
 			$step_enabled = get_option( 'alg_wc_product_open_pricing_enable_step', 'yes' );
