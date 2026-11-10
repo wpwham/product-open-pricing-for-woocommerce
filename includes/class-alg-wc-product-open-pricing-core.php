@@ -721,11 +721,11 @@ class Alg_WC_Product_Open_Pricing_Core {
 				. 'type="number" '
 				. 'data-product_id="'.$product_id.'" '
 				. 'class="alg_open_price text" '
-				. 'style="' . get_option( 'alg_wc_product_open_pricing_input_style', 'width:75px;text-align:center;' ) . '" '
+				. 'style="' . esc_attr( get_option( 'alg_wc_product_open_pricing_input_style', 'width:75px;text-align:center;' ) ) . '" '
 				. 'name="alg_open_price" '
 				. 'id="'.$input_id.'" '
 				. 'value="' . $value . '" '
-				. 'pattern="' . str_replace( '%backslash%', '\\', get_option( 'alg_wc_product_open_pricing_input_pattern', '' ) ) . '" '
+				. 'pattern="' . esc_attr( str_replace( '%backslash%', '\\', get_option( 'alg_wc_product_open_pricing_input_pattern', '' ) ) ) . '" '
 				. $custom_attributes . '>';
 
 			// Currency symbol
@@ -734,12 +734,12 @@ class Alg_WC_Product_Open_Pricing_Core {
 			$max_template = '<span class="popfwc-max">' . $max . '</span>';
 
 			// Template
-			$template_single = get_option( 'alg_wc_product_open_pricing_frontend_template', '<label for="%input_id%">' .
-				__( 'Name Your Price', 'product-open-pricing-for-woocommerce' ) . '</label> %open_price_input% %currency_symbol%' );
+			$template_single = wp_kses_post( get_option( 'alg_wc_product_open_pricing_frontend_template', '<label for="%input_id%">' .
+				__( 'Name Your Price', 'product-open-pricing-for-woocommerce' ) . '</label> %open_price_input% %currency_symbol%' ) );
 			$template        = $template_single;
 			if ( $is_loop ) {
-				$template_loop = get_option( 'alg_wc_product_open_pricing_frontend_loop_template', '<label for="%input_id%">' .
-					__( 'Name Your Price', 'product-open-pricing-for-woocommerce' ) . '</label> %open_price_input% %currency_symbol%' );
+				$template_loop = wp_kses_post( get_option( 'alg_wc_product_open_pricing_frontend_loop_template', '<label for="%input_id%">' .
+					__( 'Name Your Price', 'product-open-pricing-for-woocommerce' ) . '</label> %open_price_input% %currency_symbol%' ) );
 				$template      = empty( $template_loop ) ? $template_single : $template_loop;
 			}
 
