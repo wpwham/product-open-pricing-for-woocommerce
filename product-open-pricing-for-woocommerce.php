@@ -126,6 +126,7 @@ final class Alg_WC_Product_Open_Pricing {
 		// Admin
 		if ( is_admin() ) {
 			require_once( 'includes/settings/class-alg-wc-product-open-pricing-settings-section.php' );
+			require_once( 'includes/class-wpwham-product-open-pricing-review.php' );
 			$this->settings = array();
 			$this->settings['general'] = require_once( 'includes/settings/class-alg-wc-product-open-pricing-settings-general.php' );
 			// Metaboxes (per Product Settings)
